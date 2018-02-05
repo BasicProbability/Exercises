@@ -1,0 +1,51 @@
+\documentclass[10pt, a5paper]{scrartcl}
+% Settings
+\newcommand\problemset{1}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+\usepackage[english]{../../exercises}
+\usepackage{amsmath,amssymb,enumerate,xcolor}
+\usepackage[margin=1.7cm]{geometry}
+
+\begin{document}
+\boardquestions
+
+\begin{exercise}[Olympics]
+	There are 5 competitors in the 100m final. 
+	In how many ways can gold, silver and bronze be awarded?
+\end{exercise}
+
+
+\begin{exercise}[Coin flips]
+	\begin{subex}
+		Count the number of ways to get exactly 3 heads in 10 coin flips.
+	\end{subex}
+	
+	\begin{subex}
+		For a fair coin, what is the probability of exactly 3 heads in 10 flips?
+	\end{subex}
+\end{exercise}
+
+
+\begin{exercise}[Poker]
+	A deck of cards contains 52 with \textbf{13 ranks} (2, 3, \ldots, 9, 10, J, Q, K, A) and \textbf{4 suits} ($ {\color{red} \heartsuit}, \spadesuit , {\color{red} \diamondsuit}, \clubsuit $).
+	A poker hand is a set of \textbf{5 cards}. A \textbf{one-pair} is a poker hand with two cards having one rank and the remaining three cards having different ranks. 
+	For example: $ \{2{\color{red} \heartsuit}, 2\spadesuit, 5{\color{red} \heartsuit}, 8\clubsuit, K{\color{red} \diamondsuit} \}  $
+
+	\begin{subex}
+		How many different 5-card hands have exactly one pair? \\
+		\emph{Hint: practice with how many 2 card hands have exactly one pair.}\\
+		\emph{Hint for hint: use the rule of product.}
+	\end{subex}
+	
+	\begin{subex}	
+		What is the probability of getting a one pair poker hand?
+	\end{subex}
+\end{exercise}
+
+
+
+\vfill
+\credits{Adapted from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu}
+\end{document}
