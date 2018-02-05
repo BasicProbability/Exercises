@@ -8,7 +8,7 @@
 %\commentstrue % show comments
 
 % Packages
-\usepackage[english]{exercises}
+\usepackage[english]{{../exercises}}
 \usepackage{wasysym,hyperref,graphicx,color,bbm}
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
 \DeclareMathOperator{\Cov}{Cov}
@@ -50,7 +50,7 @@ Let $X$ encode the sum of the roll of two fair dice. Compute $H(X)$.
 \end{exercise}
 
 \begin{exercise}[calculation of relative entropy (2pt)]
-Let $X \sim Bernoulli(p)$ and $Y \sim Bernoulli(q)$. Compute $D(P_X || P_Y)$ and $D(P_Y || P_X)$ for 
+Let $X \sim \text{Bernoulli}(p)$ and $Y \sim \text{Bernoulli}(q)$. Compute $D(P_X || P_Y)$ and $D(P_Y || P_X)$ for 
 
 \begin{subex}
 $p=q$
@@ -70,9 +70,10 @@ Prove that if $X$ and $Y$ are independent, we have $H(X,Y)=H(X) + H(Y)$.
 
 \begin{subex}
 Prove that if $X$ and $Y$ are independent given $Z$, we have $H(X,Y|Z)
-= H(X|Z) + H(Y|Z)$. {\bf Hint:} We have encountered conditional
+= H(X|Z) + H(Y|Z)$. 
+\\\emph{Hint: We have encountered conditional
 independence in the context of Na{\"i}ve Bayes and Mixture Models
-before, look up the corresponding sections in the script for a formal definition.
+before, look up the corresponding sections in the script for a formal definition.}
 \end{subex}
 
 \begin{subex}

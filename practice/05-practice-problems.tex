@@ -7,7 +7,7 @@
 \commentstrue % show comments
 
 % Packages
-\usepackage[english]{exercises}
+\usepackage[english]{{../exercises}}
 \usepackage{wasysym,hyperref}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Var}{Var}
@@ -85,7 +85,7 @@ This week's exercises deal with joint distributions, covariance and correlation.
 	\begin{subex}
 		The Beta prior effectively adds some more observations of $X=0$ and $X=1$ to the data. How many of each? 
 	\end{subex}
-
+\end{exercise}
 
 \begin{exercise}[Multiple binomials]
 	Let $X_1, \dots, X_N$ be i.i.d.\ $\text{Binom}(n, \theta)$ random variables. 
@@ -113,14 +113,6 @@ This week's exercises deal with joint distributions, covariance and correlation.
 	
 \end{exercise}
 
-
-
-%	 which is the parameter space for the
-%Bernoulli distribution. The Beta distribution is a continuous distribution which we have not discussed in class. For the present exercise this is immaterial, however. The functional form of the
-%Beta distribution is: 
-%P(p) = \Gamma(\alpha+\beta)/\Gamma(\alpha)\Gamma(\alpha) \times p^{\alpha}(1-p)^{\beta}
-%Using the Beta distribution as a prior for the Bernoulli, compute the MAP estimate for the Bernoulli. Also state for which values of \alpha and \beta the MAP estimate is the same as the MLE.
-\end{exercise}
-
-
+\vfill
+\credits{Some questions are from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu.}
 \end{document}
