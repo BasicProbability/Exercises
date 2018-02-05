@@ -1,0 +1,171 @@
+\documentclass[14pt]{beamer}
+
+\usepackage{nicefrac, enumerate}
+
+\begin{document}
+
+\begin{frame}{Sufficient statistics}
+You are given a data set $ x=x_{1}^{n} $ of $ n $ i.i.d. geometrically distributed observations.
+Show that $ \sum_{i=1}^{n} $ is a sufficient statistic for the geometric distribution.
+\end{frame}
+
+\begin{frame}{Sufficient statistics}
+\small
+We will use the factorisation theorem for this exercise.
+\begin{align*}
+P(X_{1}^{n}|\Theta=\theta) = \prod_{i=1}^{n}P(X_{i}=x_{i}|\Theta=\theta)
+= \theta^{n} (1-\theta)^{\sum_{i=1}^{n}x_{i}}
+\end{align*}
+By letting $ g(\theta, \sum_{i=1}^{n}x_{i}) = \theta^{n} (1-\theta)^{\sum_{i=1}^{n}x_{i}} $ 
+and $ h(x,\sum_{i=1}^{n}x_{i}) = \frac{1}{c} $ the result follows from
+the factorisation theorem. Here, $ c $ is the number of sequences of $ n $ geometric draws whose
+sum is equal to $ \sum_{i=1}^{n}x_{i} $.
+\end{frame}
+
+\begin{frame}{Coin Tosses}
+\small
+A coin is taken from a box containing three coins, which give heads
+with probability $ p = \nicefrac{1}{3} , \nicefrac{1}{2} $, and $ \nicefrac{2}{3}$. The mystery coin is 
+tossed 80 times, resulting in 49 heads and 31 tails.
+\begin{enumerate}[a)]
+\item What is the likelihood of this data for each type on coin? Which
+coin gives the maximum likelihood?
+\item Now suppose that we have a single coin with unknown probability
+p of landing heads. Find the likelihood and log likelihood functions
+given the same data. What is the maximum likelihood estimate for p?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Coin Tosses}
+\small
+\begin{enumerate}[a)]
+\item The data $ x $ is 49 heads in 80 tosses.
+We have three hypotheses: the coin has probability
+$ p = \nicefrac{1}{3}, p = \nicefrac{1}{2}, p = \nicefrac{2}{3} $. So the likelihood function $ L_{x} : p \mapsto P(X=x|P=p) $ takes 3 values:
+\begin{align*}
+L_{x}(\frac{1}{3}) &= \binom{80}{49}\left(\frac{1}{3}\right)^{49}\left(\frac{2}{3}\right)^{31} = 6.24 \cdot 10^{-7} \\
+L_{x}(\frac{1}{2}) &= \binom{80}{49}\left(\frac{1}{2}\right)^{49}\left(\frac{1}{2}\right)^{31} = 0.024 \\
+L_{x}(\frac{2}{3}) &= \binom{80}{49}\left(\frac{2}{3}\right)^{49}\left(\frac{1}{3}\right)^{31} = 0.082
+\end{align*}
+Thus the maximum likelihood is achieved under $ p = \nicefrac{2}{3} $.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Coin Tosses}
+\begin{enumerate}[b)]
+\item We already know that the MLE for the Bernoulli (and binomial) distribution is 
+$ \frac{k}{n} $ where $ k $ is the number of successes and $ n $ is the total number of Bernoulli trials.
+Thus we get $$ p^{*}=\frac{49}{80} = 0.6125 $$ as the MLE in the present example.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Dice}
+There are five fair dice each with a different number of sides: 4,6,8,12,20.
+Jon picks one of them uniformly at random rolls it and reports a 13.
+\begin{enumerate}[a)]
+\item Compute the posterior probability for each die to have generated this outcome.
+\item Compute the posterior probabilities if the result had been a 5 instead. \textit{Hint: Drawing a table
+may help here. And please do use a calculator!}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Dice}
+\begin{enumerate}[a)]
+\item For all but the 20-sided die the likelihood and hence the posterior probability is 0. By Bayes' rule
+this means that the posterior probability of the 20-sided die is 1. The numerator and the denominator
+in Bayes' rule take on the same value in this example.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Dice}
+\small
+We use a table to display the solution. We identify the dice by their number of sides.
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Die	&	P(Die)		&	P(5|Die)			&	P(5|Die)	P(Die) & P(Die|5) \\
+\hline
+\hline
+4	&$ \nicefrac{1}{5} $	&		0			&	0				&	0		\\
+\hline
+6	&$ \nicefrac{1}{5} $	&$ \nicefrac{1}{6} $		&$ \nicefrac{1}{30} $	&$ 0.392 $	\\
+\hline
+8	&$ \nicefrac{1}{5} $	&$ \nicefrac{1}{8} $		&$ \nicefrac{1}{40} $	&$ 0.294 $	\\
+\hline
+12	&$ \nicefrac{1}{5} $	&$ \nicefrac{1}{12} $	&$ \nicefrac{1}{60} $	&$ 0.196 $	\\
+\hline
+20	&$ \nicefrac{1}{5} $	&$ \nicefrac{1}{20} $	&$ \nicefrac{1}{100} $	&$ 0.118 $	\\
+\hline
+\hline
+total&	1			&				&	0.085			&		1	\\
+\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Geometric MLE}
+For an i.i.d. data set $ x = x_{1}^{n} $ find the MLE for the geometric distribution:
+$$ P(X=x) = (1-\theta)^{x}\theta $$
+\end{frame}
+
+\begin{frame}{Geometric MLE}
+The likelihood function is
+$$ L_{x}(\theta) = \prod_{i=1}^{n} \theta(1-\theta)^{x_{i}} = \theta^{n} (1-\theta)^{\sum_{i=1}^{n}x_{i}} $$
+and thus the log-likelihood is
+$$ \mathcal{L}_{x}(\theta) = n\log(\theta) + \sum_{i=1}^{n}x_{i}\log(1-\theta) \ . $$
+\end{frame}
+
+\begin{frame}{Geometric MLE}
+In the next step we compute the score function.
+\begin{align*}
+\frac{d}{d\theta}\mathcal{L}_{x}(\theta) &= \frac{d}{d\theta}n\log(\theta) + \frac{d}{d\theta}\sum_{i=1}^{n}x_{i}\log(1-\theta) \\
+&= \frac{n}{\theta} - \frac{\sum_{i=1}^{n}x_{i}}{1-\theta}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Geometric MLE}
+Setting this to 0 gives
+\begin{align*}
+0 &= \frac{n}{\theta} - \frac{\sum_{i=1}^{n}x_{i}}{1-\theta} &\Leftrightarrow \\
+\frac{n}{\theta} &= \frac{\sum_{i=1}^{n}x_{i}}{1-\theta} &\Leftrightarrow \\
+n - n\theta &= \theta \sum_{i=1}^{n}x_{i} &\Leftrightarrow \\
+\theta &= \frac{n}{n + \sum_{i=1}^{n}x_{i}}&
+\end{align*}
+\end{frame}
+
+\begin{frame}{Geometric MLE, variant 2}
+For an i.i.d. data set $ x = x_{1}^{n} $ find the MLE for the geometric distribution:
+$$ P(X=x) = (1-\theta)^{x-1}\theta $$
+\end{frame}
+
+\begin{frame}{Geometric MLE, variant 2}
+The likelihood function is
+$$ L_{x}(\theta) = \prod_{i=1}^{n} \theta(1-\theta)^{x_{i}-1} =
+\theta^{n} (1-\theta)^{(\sum_{i=1}^{n}x_{i}) - n} $$
+and thus the log-likelihood is
+$$ \mathcal{L}_{x}(\theta) = n\log(\theta) + \left(\left(\sum_{i=1}^{n}x_{i}\right) - n\right)
+\log(1-\theta) \ . $$
+\end{frame}
+
+\begin{frame}{Geometric MLE, variant 2}
+In the next step we compute the score function.
+\begin{align*}
+\frac{d}{d\theta}\mathcal{L}_{x}(\theta) &=
+                                           \frac{d}{d\theta}n\log(\theta)
+                                           + \frac{d}{d\theta}
+                                            \left((\sum_{i=1}^{n}x_{i}) - n\right)\log(1-\theta) \\
+&= \frac{n}{\theta} - \frac{\left(\sum_{i=1}^{n}x_{i}\right) - n}{1-\theta}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Geometric MLE, variant 2}
+Setting this to 0 gives
+\begin{align*}
+0 &= \frac{n}{\theta} - \frac{((\sum_{i=1}^{n}x_{i}) - n)}{1-\theta} &\Leftrightarrow \\
+\frac{n}{\theta} &= \frac{((\sum_{i=1}^{n}x_{i}) - n)}{1-\theta} &\Leftrightarrow \\
+n - n\theta &= (\theta \sum_{i=1}^{n}x_{i}) - n \theta &\Leftrightarrow \\
+\theta &= \frac{n}{\sum_{i=1}^{n}x_{i}}&
+\end{align*}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
+
+%% Settings
+\newcommand\problemset{7}
+\newif\ifcomments
+%\commentsfalse % hide comments
+\commentstrue % show comments
+
+% Packages
+\usepackage[english]{exercises}
+\usepackage{wasysym,hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, breaklinks=true}
+
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+
+\begin{document}
+
+\practiceproblems
+
+{\sffamily\noindent
+This week's exercises deal with the basics of information theory. You only have to hand in the homework problems; these exercises are optional and for practicing only. If you have questions about them, please post them to the discussion forum and try to help each other. We will also keep an eye on that.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}[entropies]
+Consider (i) a flip of a fair coin, (ii) a toss of a fair four-sided die, and (iii) a toss of a fair six-sided die. Let a RV $X$ encode (i), (ii) and (iii) and compute $H(X)$ in each case.
+\end{exercise}
+
+\begin{exercise}[binary entropies]
+A biased coin comes up heads with a probability of $\frac{2}{3}$. Compute the entropy of the outcome of six coin flips.
+\end{exercise}
+
+\begin{exercise}[more entropy]
+Calculate the entropy of the following:
+\begin{enumerate}
+\item pixel values whose possible values are all integers in $[0,255]$ with uniform probability, 
+\item dogs sorted by whether or not they are mammals, 
+\item dogs sorted by whether they are older or not than the population's \href{https://en.wikipedia.org/wiki/Median}{median}, 
+\item RV $X$ with $P(X = 0) = \frac{1}{3}, P(X = 1) = \frac{1}{4}, P(X = 2) = \frac{1}{6}, P(X = 3) = \frac{1}{6}, P(X = 4) = \frac{1}{12}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}[joint and conditional entropy]
+Suppose that
+\begin{eqnarray*}
+P_{X}(x) & = & 1/6,\qquad x=1,2,\ldots,6;\\
+P_{Y|X}(y\,|\, x) & = & 1/x,\qquad y=1,2,\ldots,x.
+\end{eqnarray*}
+Compute $H(X)$, $H(Y \mid X)$, and $H(X,Y)$.
+\end{exercise}
+
+\end{document}

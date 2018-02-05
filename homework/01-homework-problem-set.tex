@@ -1,0 +1,109 @@
+\documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
+
+%% Settings
+\newcommand\problemset{1}
+\newcommand\deadline{Wednesday September 7th, 22:00h}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+
+% Packages
+\usepackage[english]{exercises}
+\usepackage{wasysym}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor = blue, linkcolor = blue}
+
+\begin{document}
+
+\homeworkproblems
+
+{\sffamily\noindent
+%This week's exercises deal with sets, counting and uniform probabilities.
+Your homework must be handed in \textbf{electronically via Moodle before \deadline}. This deadline is strict and late submissions are graded with a 0. At the end of the course, the lowest of your 7 weekly homework grades will be dropped. You are strongly encouraged to work together on the exercises, including the homework. However, after this discussion phase, you have to write down and submit your own individual solution. Numbers alone are never sufficient, always motivate your answers.
+}
+
+	
+\begin{exercise}[Committees (3pt)]
+	\begin{mycomment}
+		For this you need \textbf{uniform probabilities}, some combinatorics and you can use \textbf{inclusion-exclusion principle} (for disjoint sets)
+	\end{mycomment}
+
+	A committee of 6 is to be formed from a group of 6 men and 8 woman.
+
+	\begin{subex}[1pt]
+	If you pick the committee (uniformly) at random, what is the probability that everyone in the group is female?
+	\end{subex}
+
+	\begin{subex}[2pt]
+		Suppose the committee should be balanced for gender
+                (i.e.\ 3 men and 3 women) and that two of the men refuse to serve together. How many different committees are possible?
+	\end{subex}
+\end{exercise}
+
+\begin{exercise}[Necklaces (4pt)]
+	\begin{mycomment}
+		This is basically the poker-hand exercise, but it allows for a further question where order comes into play. So you need \textbf{combinations}, \textbf{permutations} and of course the \textbf{rule of product}. 
+	\end{mycomment}
+	
+	Suppose you have beads in 5 different shapes: $\CIRCLE$, $\blacksquare$, $\blacktriangle$, $\bigstar$ and $\blacklozenge$. You have 6 different beads of every shape, all in one of six colors: red, green, blue, yellow, black and white. So every bead has a unique color-shape combination (there is only one blue triangular bead, black circular one, etc.). You are going to make a necklace with 7 beads that should have a particular composition: 3 shapes have to occur precisely twice. Here are two examples of 7 beads with such a composition:
+		\[
+			\Bigr \{ {\color{red}\bigstar}
+					\;, \; {\color{red} \blacksquare}
+					\;, \; \blacksquare
+					\;, \; {\color{blue}\bigstar}
+					\;, \; {\color{yellow} \CIRCLE}
+					\;, \; \blacktriangle
+					\;, \, {\color{green}\CIRCLE}
+			 \; \Bigl\}
+			\quad \mathrm{or} \quad
+			\Bigr \{ {\color{green}\blacktriangle} 
+					\;, \; {\color{red} \blacktriangle}
+					\;, \; {\color{blue}\bigstar}
+					\;,\; \blacklozenge
+					\;, \; {\color{red}\bigstar}
+					\;, \; {\color{yellow} \blacklozenge}
+					\;, \, {\color{yellow}\CIRCLE} 
+			\; \Bigl\}
+		\]
+
+	\begin{subex}[3pt]
+		Before we can make a necklace (see part b), we need to pick our beads. You pick your 7 beads (uniformly) at random. What is the probability that they have the desired composition?
+	\end{subex}
+	
+	\begin{subex}[1pt]
+		Once we have our beads, we can make a necklace. We want to order the pairs of shapes symmetrically around the shape occurring once. As an example, take this necklace, which is symmetrical if you ignore color:
+		\[	
+		\Bigl (\; {\color{red}\blacklozenge}
+			\;,\; {\color{blue}\blacksquare}
+			\;,\; {\color{red}\blacktriangle}
+			\;,\; {\color{black}\CIRCLE}
+			\;,\; {\color{yellow}\blacktriangle}
+			\;,\; {\color{black}\blacksquare}
+			\;,\; {\color{green}\blacklozenge}
+		\; \Bigr)
+		\]
+		How many necklaces can you make from all possible groups of beads with the right composition? Note again that all beads are unique and that a necklace remains the same when you flip it around.
+	\end{subex}
+\end{exercise}
+
+\begin{exercise}[Counting functions (3pt)]
+	\begin{mycomment}
+	I changed it like this because you very explicitly need the \textbf{inclusion-exclusion principle} here, and it contains more explicit set operations. \textbf{Would exercise c work; is the suggestion clear enough?}
+	\end{mycomment}
+	
+	\begin{subex}[1pt]
+		Let $X$ and $Y$ be two finite sets. How many functions are there from $X$ to $Y$?
+		 (If you are unsure about what functions precisely are, check the \href{https://en.wikipedia.org/wiki/Function_(mathematics)}{Wikipedia} entry on \emph{Function (Mathematics)})
+	\end{subex}
+	
+	\begin{subex}[1pt]
+	How many functions are there from $\{0,1\}^n$ to $\{0,1\}^n$?	
+	\end{subex}
+	
+	\begin{subex}[1pt]
+		Let $A, B \subseteq \{1, \dots, 100\}$ be such that A contains all even numbers and $B$ all multiples of 3. Let $X$ be their union and $n\in \mathbb{N}$ some integer. How many functions $f: \{1, \dots, n\} \to X$ are there?
+	\end{subex}
+	
+\end{exercise}
+
+\end{document}

@@ -1,0 +1,5 @@
+original mixture weights
+
+0.4 = .01
+0.4 = .9
+0.2 = .2

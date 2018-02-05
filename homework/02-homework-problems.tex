@@ -1,0 +1,88 @@
+\documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
+
+%% Settings
+\newcommand\problemset{2}
+\newcommand\deadline{Wednesday September 12th, 22:00h}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+
+% Packages
+\usepackage[english]{exercises}
+\usepackage{wasysym,hyperref}
+\hypersetup{colorlinks=true, urlcolor = blue, linkcolor = blue}
+
+
+\begin{document}
+
+\homeworkproblems
+
+{\sffamily\noindent
+%This week's exercises deal with sets, counting and uniform probabilities.
+Your homework must be handed in \textbf{electronically via Moodle before \deadline}. This deadline is strict and late submissions are graded with a 0. At the end of the course, the lowest of your 7 weekly homework grades will be dropped. You are strongly encouraged to work together on the exercises, including the homework. However, after this discussion phase, you have to write down and submit your own individual solution. Numbers alone are never sufficient, always motivate your answers.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{exercise}[Hospitals (4pt)]
+	\begin{mycomment}
+	Here you need to identify \textbf{experiment, events, probability functions etc.} (Learning outcomes 1, 2) Question c is perhaps a bit annoying, but forces you to really get how a table describes a distribution (learning outcome 9). Part e is basically the 'boy or girl' paradox (LO 3, 5). 
+	\end{mycomment}
+	
+	 A football coach wants to analyze the performance of his team. After every week he registers the outcome of the match (\emph{win} or \emph{loose}, there are no ties) and how his team played (\emph{good}, \emph{fair} or \emph{hopeless}). Consider an experiment that consists of registering these things.
+	
+	\begin{subex}[0.5pt]
+		Give the sample space of this experiment.	
+	\end{subex}
+	
+	\begin{subex}[0.5pt]
+		Let $A$ be the event that the team's performance was hopeless and $B$ the event that the team won. Specify the outcomes in $A$ and $B$.
+	\end{subex}
+
+	\begin{subex}[1pt]
+		Paraphrase the event $(\Omega \setminus A) \cup B$ and give all its outcomes.	
+	\end{subex}
+	
+	\begin{subex}[1pt]
+	After a couple of weeks, the coach analysed the data and came to the following conclusions: 1) His team is equally likely to win or loose; 2) his team is equally likely to play a good or a hopeless match, but 3)  fair performance is four times as likely as good performance. Finally, 4) they never win when they play a hopeless match and 5) never loose when they play a good match. Give a table describing the full probability function.
+	\end{subex}
+
+	\begin{subex}[1pt]
+		Last week's match has not been hopeless. What is the probability that they've won? (If you didn't solve part (d), use a fancy probability function of your choice, but make sure to include it in your solution.)
+	\end{subex}
+
+
+\end{exercise}
+
+\begin{exercise}[A probability urn (3pt)]
+\begin{mycomment}
+	I added this, because of LO 6: \textbf{total probability using the multiplication rule}. However, now the base-rate fallacy is missing. Woud we rather have that one, than this one? I feel that drawing trees is more useful, now.
+\end{mycomment}
+
+An urn contains 3 red balls, 5 green balls and one blue ball. You randomly draw a ball, don't put it back, but add two balls of the colors you did not draw. (For example: if you have drawn a red ball, add a green and a blue ball to the urn.) What is the probability that the second ball is red? (Hint: draw a tree!)
+\end{exercise}
+
+\begin{exercise}[Probability functions (3pt)]
+	\begin{mycomment}
+		I didn't find these properties in the script; did I miss something? These three questions deal with \textbf{probability functions} and \textbf{independence} (L. 1, 4)
+		
+		Are these too many questions? Maybe drop (a) or (b)?
+	\end{mycomment}
+
+	Let $(\Omega, \mathcal{A}, P)$ be a finite probability space and $A, B\in \mathcal A$ two events.
+	\begin{subex}[1pt]
+		Show that $P$ is \emph{monotone}: if $A \subseteq B$, then $P(A) \le P(B)$. 
+	\end{subex}
+	
+	\begin{subex}[1pt]
+		Show that if $A \subseteq B$, then $P(B \setminus A) = P(B) - P(A)$. Hints: use (a).
+	\end{subex}
+	
+	\begin{subex}[1pt]
+		Now assume that $A$ and $B$ are independent and prove that $A^c = \Omega\setminus A$ and $B$ are also independent. (Note that $A\subseteq B$ need not hold.) \emph{Hint: draw a Venn diagram and post a question to the forum if you need more hints.} 
+	\end{subex}
+\end{exercise}
+
+
+\end{document}

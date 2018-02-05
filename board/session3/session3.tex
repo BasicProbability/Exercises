@@ -1,0 +1,85 @@
+\documentclass[14pt]{beamer}
+
+\begin{document}
+
+\begin{frame}{Discrete Distributions}
+\begin{table}
+\begin{tabular}{|c||c|c|c|c|}
+\hline
+$X$ 				&	1	&	3	&	5	&	7	\\
+\hline
+$F(X \leq x)$	&	.5	&	.75	&	.9	&	1	\\
+\hline
+\end{tabular}
+\end{table}
+\begin{enumerate}[a)]
+\item What is $ P(X \leq 3) $?
+\item What is $ P(X = 3) $?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Answers}
+\begin{enumerate}[a)]
+\item 0.75
+\item 0.75-0.5 = 0.25
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Expectation}
+\begin{enumerate}[a)]
+\item Would you accept a gamble that offers a 10\% chance to win \$95 and a 90\% chance of losing \$5?
+\item Would you pay \$5 to participate in a lottery that offers a 10\% chance to win \$100 and a \%90
+percent chance to win nothing?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Partial Answers}
+This is the same calculation twice:
+$$ 0.1 \times 95 - 0.9 \times 5 = 9.5 - 4.5 = 5 $$
+\end{frame}
+
+\begin{frame}{Memorylessness}
+Assume that $ X \sim Geometric(p) $. Show that the geometric distribution is memoryless (or stationary), i.e.
+show that 
+$$ P(X = n + k | X \geq n) = P(X = k) $$
+where $ n,k > 0 $.
+\end{frame}
+
+\begin{frame}{Answer}
+\begin{itemize}
+\item By definition : $ P(X = n + k | X \geq n) = \frac{P(X = n + k, X \geq n)}{P(X \geq n)} $
+\item We calculate $ P(X \geq n) $ as $ (1-p)^{n} $
+\end{itemize}
+\begin{align*}
+&\frac{P(X = n + k, X \geq n)}{P(X \geq n)} = \frac{P(X = n + k)}{P(X \geq n)} \\
+&= \frac{p(1-p)^{n+k}}{(1-p)^{n}} = p(1-p)^{k}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Variance}
+\begin{table}
+\center
+\begin{tabular}{|c||c|c|c|c|c|}
+\hline
+$ X $		& 1	&	2	&	3	&	4	&	5	\\
+\hline
+$P(X = x)$	& .1 & .2	&	.4	&	.2	&	.1	\\
+\hline 
+\end{tabular}
+\end{table}
+\begin{enumerate}[a)]
+\item Compute the variance and standard deviation $ \sigma(X) $ of $ X $.
+\item What are the variance and standard deviation of $ \frac{X}{\sigma(X)} $?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Answers}
+\begin{enumerate}[a)]
+\item $ \mathbb{E}(X) = 3 $ and thus $ var(X) = .1 \times 4 + .2 \times 2 + .1 \times 4 = 1.2 $. It follows
+that $ \sigma(X) = \sqrt{var(X)} = \sqrt{1.2} $.
+\item For any real RV $ Y $ we have $ var\left(\frac{Y}{\sigma(Y)}\right) = \sigma(Y)^{-2}\sigma(Y)^{2}= 1 $. 
+This is called normalisation.
+\end{enumerate}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{calc}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, breaklinks=true}
+
+%\newcommand{\prop}[1]{\lbrack \! \lbrack #1 \rbrack \! \rbrack}
+
+\newcommand{\philip}[1]{ \textcolor{red}{\textbf{Philip:} #1}}
+\newcommand{\chris}[1]{ \textcolor{blue}{\textbf{Chris:} #1}}
+
+
+\title{Theory Assignment 2 -- Basic Probability, Computing and Statistics\\[2mm]
+\large{Fall 2015, Master of Logic, University of Amsterdam}}
+
+\author{}
+\date{Submission deadline: Monday, September 14th, 2015, 9 a.m.}
+
+
+
+\begin{document}
+\maketitle
+
+\paragraph{Cooperation}
+Cooperation among students for both theory and programming exercises
+is strongly encouraged.  However, after this discussion phase, every student writes down and submits his/her own individual solution.
+
+\paragraph{Guidelines}
+	The starred exercises are relatively easy exercises for you to practice. No points are awarded for them. You may pick and choose {\bf two exercises} for exercise type I and {\bf one exercise} for exercise types II and III for submission, i.e. you need to submit a total of 4 exercises to be able to get all points. Numbered exercises with an exclamation mark are supposed to be a bit harder and you may challenge yourself by trying to solve them.
+
+In the directory of your private url there is folder called `theory\_submissions'. Please upload your submission there. Your submission should be a PDF-document (use a scanner for handwritten documents!) entitled \textit{AssignmentX\_yourStudentNumber.pdf}, where \textit{X} is the number of the assignment and \textit{yourStudentNumber} is your student number. If your submission does not comply with this format, we will deduct 1 point. For each day that your submission is late, we deduct 2 points.
+
+If you have any question about the homework or if you need help, do not hesitate to contact \href{mailto:T.S.Brochhagen@uva.nl}{Thomas}.
+
+\paragraph{Exercises}
+
+\paragraph{Type I [two exercises: 1.5 points per exercise]}
+\begin{enumerate}
+\item A hospital registers patients according to whether they have insurance (registered as $1$ if insured and $0$ if not), as well as according to their condition, rated as good, fair, or hopeless (registered as $g, f,$ and  $h$, respectively). Consider an experiment that consists of registering such a patient. \begin{itemize}
+		\item[(i)] Give the sample space of this experiment.
+		\item[(ii)] Let $H$ be the event that the patient is in hopeless condition. Specify the outcomes in $H$.
+		\item[(iii)] Let $U$ be the event that the patient is uninsured. Specify the outcomes in $U$.
+		\item[(iv)] Paraphrase the event $(\Omega \setminus U) \cup H$ and give all its outcomes.
+		\end{itemize}
+	\item Consider an experiment that consists of determining the focus of 14 students in a class as either `logic', `language' or `computation', as well as their political inclination -- `left', `center', or `right'. How many outcomes are
+\begin{itemize}
+	\item[(i)] in the sample space?
+	\item[(ii)] in the event that at least one of class member is focuses on `language'?
+	\item[(iii)] in the event that none identifies as `right'?
+\end{itemize}
+\item Sixty percent of the students at a certain school wear neither a wristwatch nor a glasses. 20 percent wear a wristwatch and 30 percent glasses. If one is picked randomly, what is the probability of the student is wearing
+	\begin{itemize}
+		\item[(i)] a wristwatch or glasses?
+		\item[(ii)] a wristwatch and glasses?
+	\end{itemize}
+\item An urn contains $n$ white and $m$ black balls, $n, m > 0$.
+	\begin{itemize}
+		\item[(i)] If two balls are randomly drawn, what is the probability that they are of the same color?
+		\item[(ii)] If a ball is randomly drawn and then replaced before a second one is drawn, what is the probability that both drawn balls are of the same color?
+	\end{itemize}
+\end{enumerate}
+
+
+
+
+\paragraph{Type II [one exercise: 3.5 points]}
+\begin{enumerate}
+	\item Let $v = \mathbb{P}(A|C)$, $w = \mathbb{P}(B|C)$ and $v \leq w$. Show that 
+	\begin{itemize}
+		\item [(i)] $0 \leq \mathbb{P}(A \cap B|C) \leq v$ (a conjunction's probability is upper-bounded by its least probable conjunct).	 \item[(ii)] $w \leq \mathbb{P}(A \cup B|C) \leq 1$ (a disjunction's probability is lower-bounded by its most probable disjunct).
+	\end{itemize}
+\item Let $v = \mathbb{P}(A)$, $w = \mathbb{P}(B)$ and $v \leq w$. Show that $v + w > 1 \Rightarrow \mathbb{P}(A \cap B) > 0$.
+\item[3!] An urn contains $n$ green and $m$ orange balls. They are drawn one at a time until a total of $r$, $r \leq n$, green balls have been drawn. Compute the probability that a total of $k$ balls are drawn.
+
+%		\item[(ii)] $a + b < 1 \rightarrow \mathbb{P}(A \cup B) \leq 1$.
+\end{enumerate}
+
+
+
+\paragraph{Type III [one exercise: 3.5 points]}
+\begin{enumerate}
+	\item Show that $\mathbb{P}(A \cap B|C) = \mathbb{P}(A|C) + \mathbb{P}(B|C) - \mathbb{P}(A \cup B|C)$ %using only the fact that for any event $E \in \mathcal{A}$  $\mathbb{P}(E) + \mathbb{P}(\bar{E}) = 1$\footnote{Also called the {\em sum rule}, cp. Definition 2.2.} and Definition 2.5 (conditional probability).
+	\item[2!] For a set $A$, if, for some $i > 0$, $A_1, A_2, ... A_i$ are non-empty mutually exclusive subsets of $A$ such that $\bigcup_{k=1}^{i}A_k = A$, the set $\{A_1, ..., A_i\}$ is called a \emph{partition} of $A$. Let $P_n \in \mathbb{N}$ be the total number of different partitions of $\{1,2,...,n\}$. For instance, $P_1 = 1$ (the only possible partition of the singleton being $\{1\}$ and $P_2 = 2$ (two partitions possible; $\{\{1,2\}, \{\{1\},\{2\}\}\}$). Show that
+	\begin{itemize}
+		\item[(i)] $P_3 = 5$ and $P_4 = 15$ \, ,
+		\item[(ii)] $P_{n+1} = 1 + \sum_{k=1}^n \binom{n}{k}P_k$ \, .
+	\end{itemize}
+
+\end{enumerate}
+
+
+
+\paragraph{Self-study}
+\begin{enumerate}
+<<<<<<< HEAD
+\item[*] Show that $\mathbb{P}(A \cup B) = \mathbb{P}(B \cup A)$.
+=======
+\item[*] Show that $\mathbb{P}(A \cap B) = \mathbb{P}(B \cap A)$.
+>>>>>>> 9fe3049cf806148bcd334db7a0c46329aab87ecf
+\item[*] Show that $\mathbb{P}(\Omega \setminus A|B) + \mathbb{P}(A|B) = 1$.
+\item[*] Let $A$ and $B$ be mutually exclusive events with $\mathbb{P}(A) = .3$ and $\mathbb{P}(B) = .5$. What is the probability that (i) either A or B occurs, (ii) A occurs but B does not, (iii) both A and B occur?
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass[11pt, leqno, a4paper]{article}
+\usepackage{hyperref, amsmath, amssymb}
+\hypersetup{colorlinks=true, urlcolor=blue, breaklinks=true}
+
+\title{Programming Assignment 6 -- Basic Probability, Computing and Statistics 2016 \\[2mm]
+\large{Fall 2016, Master of Logic, University of Amsterdam}}
+\author{Instructors: Christian Schaffner and Bas Cornellisen}
+\date{Submission deadline: Wednesday, December 14th, 8 p.m.}
+
+\newcommand{\angles}[1]{$\langle$#1$\rangle$}
+
+\begin{document}
+\maketitle
+
+\paragraph{Note:} if the assignment is unclear to you or if you get
+stuck, do not hesitate to ask in the
+\href{https://www.moodle.ch/lms/mod/forum/view.php?id=1721}{forum}.
+
+\section{Playing games}\label{intro}
+This week we will implement a little game to entertain ourselves with. The game is called \href{https://en.wikipedia.org/wiki/Rock-paper-scissors}{Rock, Paper, Scissors}. 
+The rules are straightforward.
+Each of two players chooses one of rock, paper and scissors. Rock beats scissors, scissors beat paper and paper beats rock. The player who chooses the winning
+item gets one point. If both players choose the same item, no points are awarded. The game is played for $ n $ rounds and the player with the most points
+is declared the winner. If both players have the same amount of points, a tie breaking round is played. If both players pick the same item in the tie breaker,
+another round is played until finally one player wins the game.
+
+You will implement \textit{Rock, Paper, Scissors}. There should be two computer players: one who picks his item randomly in each round and one who cheats. 
+The cheater waits until his opponent has chosen and then picks the item that beats the item of the
+opponent.
+
+The user should be able to determine the number of rounds that shall be played. He can either play against one of the computer players himself or he can have two
+computer players play against each other.
+
+\subsection{The User Interface}\label{sec:interface}
+
+To spare the user the pain of having to type his choice each time, the options should be numeric and the user should be reminded of what the options are in each
+round. Thus, at the beginning of each round, the program should print something like
+\begin{center}
+\textit{Please choose your item (1=rock, 2=paper, 3=scissors)}
+\end{center}
+Also after both the user and the computer player (or both computer players) have made their choice, there should be a print-out about what has happened in this round,
+followed by a tally of the points (there is no need to centre this). 
+\begin{center}
+\textit{Player1 chose \angles{item1}.\\
+Player2 chose \angles{item2}.\\
+\angles{Item1/2} beats \angles{item1/2}.\\
+Player1 : X points \hspace{0.5cm} Player2: Y points}
+\end{center}
+
+Here \angles{item1/2} are the items chosen by the players.
+
+\section{Grading}
+In this assignment everything should be either a function or a class. There should be no code outside a function or a class (except for import statements). Your
+program has to be executable from the command line. The user first gets to choose whether he wants to play himself or whether he wants to simulate a game between
+computer players. He then gets to choose the computer players (either one or two of them, depending on the previous choice). Finally, he selects the number of
+rounds and the game starts.
+\begin{itemize}
+\item[2 points]	All players, computer or human, are classes that inherit from the same parent class.
+\item[1 point]	The user is given options as described in Section~\ref{sec:interface}.
+\item[2 points]	Two computer players are available as described in the previous section (1 point per computer player). They work correctly 
+				(i.e. they play the strategies described in Section~\ref{intro}).
+\item[1 point]	Human against computer gameplay works correctly.
+\item[1 point]	Computer against computer gameplay works correctly.
+\item[1 point]	If after $ n $ rounds there is a winner, the program determines that winner correctly.
+\item[1 point]	If after $ n $ rounds there is a tie, additional rounds are played till the tie is broken. The program then correctly determines the winner.
+\item[1 point]  All code is contained in classes or functions (except imports and the main method's if-statement).
+\end{itemize}
+
+
+
+
+\end{document}

@@ -1,0 +1,62 @@
+\documentclass[11pt, leqno, a4paper]{article}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, breaklinks=true}
+
+\title{Programming Assignment 1 -- Basic Probability, Computing and Statistics 2016 \\[2mm]
+\large{Fall 2016, Master of Logic, University of Amsterdam}}
+\author{Instructors: Philip Schulz, Christian Schaffner and Bas Cornellisen}
+\date{Submission deadline: Wednesday, November 9th, 8 p.m.}
+
+\begin{document}
+\maketitle
+
+\paragraph{Note:} if the assignment is unclear to you or if you get stuck, do not hesitate to contact \href{mailto:P.Schulz@uva.nl}{Philip}.
+
+\section{Exercise}
+This week we are going to build a first small interactive program. The program is a form of dialogue system. It should ask the user questions,
+store the answer and make inferences about the user based on his answers. Below, we show the system's desired ouput. 
+\begin{itemize}
+\item \textit{Hello, I am} some name of your choice. \textit{What is
+    your name? Please only give me one first name followed by your
+    entire last name (e.g. \emph{Edward Snowden} or \emph{Vincent van Gogh}.) My favourite number
+    is \emph{a random number between 1 and 1000 (both inclusive)}.}
+\item \textit{It's a pleasure to meet you. What is your birthday}? (specify input format here)
+\item \textit{Do you smoke? (yes/no)}
+\item \textit{It was nice talking to you. Let me summarise what I learnt about you. Your given name is} the given name. \textit{Your surname is}
+the surname. \textit{You are} correct age \textit{years old.} 
+\textit{Smoker: yes/no.} (depending on the information given by the user).
+\end{itemize}
+
+Notice that in order to compute the correct age, you need to know what date it is today. Luckily
+Python has some \href{https://docs.python.org/3/library/datetime.html}{built-in functions} to help
+you figure this out. You also need to find out how to generate random numbers. While you can implement
+this any way you like, you may find \href{https://docs.python.org/3/library/random.html}{this documentation} helpful.
+
+\section{Grading}
+This section tells you what to look out for when programming. It also tells you how you should grade the assignment. In general, whenever you grade 
+someone else's program, try to break it! This means that you should test limit cases in which the program might fail despite working correctly
+on more common inputs. However, since we are at the start of this course, you should only provide input
+to the program that is valid (for example, only provide your birthday in the specified format).
+
+In the present case you should first test the program with true information about you but then also with
+information that might be true for other people. For example, identify yourself once as a smoker and once as a non-smoker. Also try to provide a birthday that took place before the year 0.
+
+As a general rule, if you the program cannot perform one of the tasks below because it does not start up
+or crashes on \textbf{valid} user input, award 0 points for that task.
+
+\enlargethispage{1cm}
+
+\begin{itemize}
+\item[1 point] The favourite number of the program is truly random. This means that it should change
+almost always when you start the program.
+\item[1 point] The favourite number of the program always lies in [1,1000]. This can be checked by inspecting the code.
+\item[2 points] All questions show up correctly and in the right order (give full credit when the program output is formulated slightly differently from the one here)
+\item[2 points] The program correctly splits up the given name and surname. Check whether it can deal with complex surnames. A friend of mine is called
+Leria de la Rosa. The program should correctly identify such a surname.
+\item[2 points] The program determines the correct age of the person at the time of execution. Play around with that. 1 point is to be deducted if the
+program cannot deal with people born b.c. (which we will denote by negative integers) or in the year 0.
+\item[1 point] The program correctly identifies smokers and non-smokers. Crucially, it should not matter whether the answer is typed in upper or lower case.
+\end{itemize}
+
+
+\end{document}

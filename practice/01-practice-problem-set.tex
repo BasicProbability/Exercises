@@ -1,0 +1,86 @@
+\documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
+
+%% Settings
+\newcommand\problemset{1}
+\newcommand\deadline{Wednesday September 5th, 21:00h}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+
+% Packages
+\usepackage[english]{exercises}
+\usepackage{wasysym,hyperref}
+\hypersetup{colorlinks=true, urlcolor = blue, linkcolor = blue}
+
+\begin{document}
+
+\practiceproblems
+
+{\sffamily\noindent
+This week's exercises deal with sets, counting and uniform probabilities. You do not have to hand these exercises in; they are optional and for practicing only. If you have questions about them, please post them to the \href{https://www.moodle.ch/lms/mod/forum/view.php?id=1634}{discussion forum} and try to help each other. We will also keep an eye on that.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}[]
+	There are 11 students in a class: 4 boys and 7 girls. We need to form a group of 5 people.
+	
+	\begin{subex}
+		How many different groups can you make?	
+	\end{subex}
+
+	 \begin{subex}
+	 		How many different groups are possible with at least 4 girls?
+	 \end{subex}
+	 
+	 \begin{subex}
+		If you pick the group (uniformly) at random, what is the probability that there are at least 3 boys in the group?
+	 \end{subex}
+\end{exercise}
+
+\begin{exercise}[Words]
+	\begin{subex}
+	How many `words' of length 5 can you make using each letter of the alphabet at most once?
+	\end{subex}
+	
+	\begin{subex}
+	And how many if the order of the letters is irrelevant? (I.e., if we treat `words'  and `sword' as the same word.)
+	\end{subex}
+	
+	\begin{subex}
+	And how many words can you make if you can use every letter as many times as you like?	
+	\end{subex}
+
+	\begin{subex}
+	In how many unique ways can the letters in the word `error' be arranged?
+	\end{subex}
+
+	\begin{subex}
+	 Consider a word of $n$ letters in which two letters occur more than once: $p$ and $q$ times respectively. How many unique `words' of the same length can you make of the $n$ letters?
+	\end{subex}
+\end{exercise}
+
+\newpage
+\begin{exercise}[Books]
+	 You have 3 books on complexity theory, 2 on probability theory, and 1 novel.
+	\begin{subex}
+	In how many ways can the books be arranged?	
+	\end{subex}
+	
+	\begin{subex}
+	And what if	the books on complexity theory must be together but the other books can be arranged in any order?
+	\end{subex}
+\end{exercise}
+
+\begin{exercise}[Poker hands]
+	Calculate the probability of drawing each of these poker hands.
+	
+	\begin{subex}[Two-pair]
+		Two cards have one rank, two cards have another rank, and the remaining card has a third rank. Example: two 2's, two 5's and a king.
+	\end{subex}
+	
+	\begin{subex}[Three-of-a-kind]
+		 Three cards have one rank and the remaining two cards have two other ranks. Example: three 2's, a five and a king.
+	\end{subex}
+\end{exercise}
+
+\end{document}

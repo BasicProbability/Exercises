@@ -1,0 +1,183 @@
+\documentclass{beamer}
+\usepackage{amsmath, amssymb, enumerate, bbm, hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+
+\newcommand{\id}[1]{\mathbbm{1}\left(#1\right)}
+
+\title{Board Questions Session 6}
+\date{October 10th}
+
+<<setup, include = F>>=
+library(knitr)
+data = c(0,2,2,3)
+datasize = length(data)
+geomparams = c(0.2,0.6)
+geomweights = c(0.2,0.8)
+geomLik = 0
+for (i in 1:datasize) {
+	geomLik = geomLik + log(dgeom(data[i],geomparams[1])*geomweights[1] + dgeom(data[i],geomparams[2])*geomweights[2])
+}
+
+posteriors = c()
+for (i in 1:datasize) {
+	posteriors = c(posteriors, (dgeom(data[i],geomparams[1])*geomweights[1]) /  (dgeom(data[i],geomparams[1])*geomweights[1] + dgeom(data[i],geomparams[2])*geomweights[2]))
+}
+
+oneminuspost = 1-posteriors
+
+expectedSum = 0
+for (i in 1:datasize) {
+	expectedSum = expectedSum + data[i] * posteriors[i]
+}
+@
+
+\begin{document}
+
+\begin{frame}{Geometric EM}
+\small
+You are given a mixture model with mixture components $ c_{1},c_{2} $ which are linked to geometric
+distributions with parameters $ \theta^{(0)}_{c_{1}} = \Sexpr{geomparams[1]}, \theta^{(0)}_{c_{2}} = \Sexpr{geomparams[2]} $. You
+observe the data set
+\begin{align*}
+\{\Sexpr{data}\} \ .
+\end{align*}
+Assume that the latent variables are i.i.d. and that $ P(Y=c_{1}|\Theta=\theta^{(0)}) = 0.2 $.
+\begin{enumerate}[a)]
+\item What is the (marginal) log-likelihood of this data set under the model? Feel free to use
+calculators.
+\item Find the most likely mixture component for each data point.
+\item Perform one EM iteration.
+\item Compute the marginal log-likelihood of the data with the updated parameters. The new value
+should be higher than the one computed in the beginning.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Geometric EM}
+\small
+\begin{enumerate}[a)] 
+\item We observed data $x_1, x_2, x_3, x_4 = 0, 2, 2, 3$; and have
+  initial parameters
+  $\theta^{(0)} = (\theta_{c_1}^{(0)}, \theta_{c_2}^{(0)},
+  w_1^{(0)},w_2^{(0)}) = (0.2, 0.6, 0.2, 0.8)$. Therefore,
+  the log-likelihood is: 
+ \begin{align*}
+  \log &P(X=x | \Theta=\theta^{(0)})\\
+  = \log & P(X_1 = x_1 | \Theta=\theta^{(0)}) +  \log P(X_2 = x_2 |
+        \Theta=\theta^{(0)})\\ 
+        &+ \log P(X_3 = x_3 |
+        \Theta=\theta^{(0)}) + \log P(X_4 = x_4 |
+        \Theta=\theta^{(0)}) \\
+   =\log &\big[P(X_1 = 0,Y_1=c_1 | \Theta=\theta^{(0)}) + P(X_1 =
+          0,Y_1=c_2 | \Theta=\theta^{(0)}) \big]\\  
+    &+\log P(X_2 = 2 |
+        \Theta=\theta^{(0)}) + \log P(X_3 = 2 |
+        \Theta=\theta^{(0)})\\ 
+        &+ \log P(X_4 = 3 |
+        \Theta=\theta^{(0)}) \\        
+=\log&(\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]}\cdot \Sexpr{1-geomparams[1]}^{\Sexpr{data[1]}} + \Sexpr{geomweights[2]} \cdot \Sexpr{geomparams[2]} \cdot \Sexpr{1-geomparams[2]}^{\Sexpr{data[1]}}) \\
+&+ 2\cdot \log(\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]} \cdot \Sexpr{1- geomparams[1]}^{2} + \Sexpr{geomweights[2]}\cdot \Sexpr{geomparams[2]} \cdot \Sexpr{1- geomparams[2]}^{2}) \\
+&+ \log(\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]} \cdot \Sexpr{1- geomparams[1]}^{3} + \Sexpr{geomweights[2]}\cdot \Sexpr{geomparams[2]} \cdot \Sexpr{1- geomparams[2]}^{3})
+= \Sexpr{geomLik}
+\end{align*}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Geometric EM}
+\small
+\begin{enumerate}[b)]
+\item $ P(Y = c_{1}|X=\Sexpr{data[1]}, \Theta=\theta^{(0)}) =
+  \dfrac{\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]}\cdot
+    \Sexpr{1-geomparams[1]}^{\Sexpr{data[1]}}}{\Sexpr{geomweights[1]}\cdot
+    \Sexpr{geomparams[1]}\cdot \Sexpr{1-geomparams[1]}^{\Sexpr{data[1]}} + \Sexpr{geomweights[2]} \cdot \Sexpr{geomparams[2]} \cdot \Sexpr{1-geomparams[2]}^{\Sexpr{data[1]}}} = \Sexpr{posteriors[1]} $.\\ Also 
+  $ P(Y = c_{2}|X=\Sexpr{data[1]}, \Theta=\theta^{(0)})  = 1 -
+  \Sexpr{posteriors[1]} = \Sexpr{oneminuspost[1]}$. Therefore, $c_2$
+  is the more likely mixture component when observing $X=\Sexpr{data[1]}$.
+\\ \vspace{.4cm}
+$ P(Y = c_{1}|X=\Sexpr{data[2]}, \Theta=\theta^{(0)}) = \dfrac{\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]}\cdot \Sexpr{1-geomparams[1]}^{\Sexpr{data[2]}}}{\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]}\cdot \Sexpr{1-geomparams[1]}^{\Sexpr{data[2]}} + \Sexpr{geomweights[2]} \cdot \Sexpr{geomparams[2]} \cdot \Sexpr{1-geomparams[2]}^{\Sexpr{data[2]}}} = \Sexpr{posteriors[2]} $\\ Also 
+  $ P(Y = c_{2}|X=\Sexpr{data[2]}, \Theta=\theta^{(0)})  = 1 -
+  \Sexpr{posteriors[2]} = \Sexpr{oneminuspost[2]}$. Therefore, $c_2$
+  is the more likely mixture component when observing $X=\Sexpr{data[2]}$.
+\\ \vspace{.4cm}
+$ P(Y = c_{1}|X=\Sexpr{data[4]}, \Theta=\theta^{(0)}) = \dfrac{\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]}\cdot \Sexpr{1-geomparams[1]}^{\Sexpr{data[4]}}}{\Sexpr{geomweights[1]}\cdot \Sexpr{geomparams[1]}\cdot \Sexpr{1-geomparams[1]}^{\Sexpr{data[4]}} + \Sexpr{geomweights[2]} \cdot \Sexpr{geomparams[2]} \cdot \Sexpr{1-geomparams[2]}^{\Sexpr{data[4]}}} = \Sexpr{posteriors[4]} $\\ Also 
+  $ P(Y = c_{2}|X=\Sexpr{data[4]}, \Theta=\theta^{(0)})  = 1 -
+  \Sexpr{posteriors[4]} = \Sexpr{oneminuspost[4]}$. Therefore, $c_2$
+  is the more likely mixture component when observing $X=\Sexpr{data[4]}$.
+\end{enumerate}
+  Go play with the \href{https://ocw.mit.edu/ans7870/18/18.05/s14/applets/probDistrib.html}{applet} in order to check that this makes sense!
+\end{frame}
+
+\begin{frame}{Geometric EM}
+\small
+\begin{enumerate}[c)]
+\item \textbf{E-step}\begin{align*}
+&\mbox{expected fractional count of $c_1$:}\\ 
+                       &\mathbb{E}[\sum_{i}\id{Y_{i}=c_{1}}\mid X=x, \Theta=\theta^{(0)}] = \Sexpr{posteriors[1]} + 
+2\cdot \Sexpr{posteriors[2]} + \Sexpr{posteriors[4]} \\
+&= \Sexpr{sum(posteriors)} \\[2mm]
+&\mbox{expected fractional count of $c_2$:}\\ 
+                       &\mathbb{E}[\sum_{i}\id{Y_{i}=c_{2}}\mid X=x, \Theta=\theta^{(0)}] = \Sexpr{datasize} - \Sexpr{sum(posteriors)} = \Sexpr{datasize-sum(posteriors)} \\[2mm]
+&\mbox{expected sufficient statistic $\sum_i x_i$:}\\
+&\mathbb{E}[\sum_{i}x_{i}\id{Y_{i}=c_{1}}\mid X=x,
+  \Theta=\theta^{(0)}]\\  
+                       &=\Sexpr{data[1]} \cdot \Sexpr{posteriors[1]} + 
+\Sexpr{data[2]} \cdot \Sexpr{posteriors[2]} + \Sexpr{data[3]} \cdot
+  \Sexpr{posteriors[3]} + \Sexpr{data[4]} \cdot \Sexpr{posteriors[4]} = \Sexpr{expectedSum} \\
+&\mathbb{E}[\sum_{i}x_{i}\id{Y_{i}=c_{2}}\mid X=x, \Theta=\theta^{(0)}]\\ 
+                       &= \Sexpr{data[1]} \cdot \Sexpr{1-posteriors[1]} + 
+ \Sexpr{data[2]} \cdot \Sexpr{1-posteriors[2]} + \Sexpr{data[3]} \cdot
+                         \Sexpr{1-posteriors[3]} +
+                         \Sexpr{data[4]} \cdot \Sexpr{1-posteriors[4]} 
+                         = \Sexpr{sum(data) - expectedSum}
+\end{align*}
+\end{enumerate}
+\end{frame}
+
+<<update, echo=F>>=
+new_weights = c(sum(posteriors) / (datasize), 1 - sum(posteriors) / (datasize))
+new_params = c(sum(posteriors) /(expectedSum + sum(posteriors)), (datasize - sum(posteriors)) /((sum(data) - expectedSum) + (datasize - sum(posteriors))))
+
+newLik = 0
+for (i in 1:datasize) {
+	newLik = newLik + log(dgeom(data[i],new_params[1])*new_weights[1] + dgeom(data[i],new_params[2])*new_weights[2])
+}
+@
+
+\begin{frame}{Geometric EM}
+\textbf{M-step} For the MLE of the categorical RV $Y$, we normalize
+the expected fractional counts computed in the E-step:
+\begin{align*}
+&P(Y=c_{1}\mid \Theta = \theta^{(1)}) = \frac{\Sexpr{sum(posteriors)}}{\Sexpr{sum(posteriors)} + \Sexpr{datasize - sum(posteriors)}} = \Sexpr{new_weights[1]} \\
+&P(Y=c_{2}\mid \Theta = \theta^{(1)}) = 1 - \Sexpr{new_weights[1]}
+= \Sexpr{new_weights[2]} 
+\end{align*}
+We use that the MLE of this version of the geometric distribution is
+given by $\theta_{MLE} = \frac{n}{n+\sum_i x_i}$, but now use the
+fractional counts and expected sufficient statistic computed in the E-step:\\
+
+new parameter of $ c_{1} $ : $ \dfrac{\Sexpr{sum(posteriors)}}{
+  \Sexpr{sum(posteriors)} + \Sexpr{expectedSum} } = \Sexpr{new_params[1]} $\vspace{.5cm}
+
+new parameter of $ c_{2} $ : $ \dfrac{\Sexpr{datasize -
+    sum(posteriors)}}{\Sexpr{datasize - sum(posteriors)} + \Sexpr{sum(data) - expectedSum}} = \Sexpr{new_params[2]} $
+\end{frame}
+
+\begin{frame}{Geometric EM}
+ \begin{enumerate}[d)]
+  The new log-likelihood of the data $x_1, x_2, x_3, x_4 = 0, 2, 2, 3$ is computed as in a) but now using the
+  updated parameters $\theta^{(1)} = (\theta_{c_1}^{(1)}, \theta_{c_2}^{(1)},
+  w_1^{(1)},w_2^{(1)}) = (\Sexpr{new_params[1]},
+  \Sexpr{new_params[2]},\Sexpr{new_weights[1]},\Sexpr{new_weights[2]})$:
+\item \begin{align*}
+\log&(\Sexpr{new_weights[1]}\cdot \Sexpr{new_params[1]}\cdot \Sexpr{1-new_params[1]}^{\Sexpr{data[1]}}  \\
+&+ \Sexpr{new_weights[2]} \cdot \Sexpr{new_params[2]} \cdot \Sexpr{1-new_params[2]}^{\Sexpr{data[1]}}) \\
++ 2\cdot &\log(\Sexpr{new_weights[1]}\cdot \Sexpr{new_params[1]} \cdot \Sexpr{1- new_params[1]}^{2} \\
+&+ \Sexpr{new_weights[2]}\cdot \Sexpr{new_params[2]} \cdot \Sexpr{1- new_params[2]}^{2}) \\
++ \log&(\Sexpr{new_weights[1]}\cdot \Sexpr{new_params[1]} \cdot \Sexpr{1- new_params[1]}^{3} \\
+&+ \Sexpr{new_weights[2]}\cdot \Sexpr{new_params[2]} \cdot \Sexpr{1- new_params[2]}^{3})
+= \Sexpr{newLik} 
+\end{align*}
+\end{enumerate}
+\end{frame}
+
+\end{document}

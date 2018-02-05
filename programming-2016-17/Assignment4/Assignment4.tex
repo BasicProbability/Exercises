@@ -1,0 +1,121 @@
+\documentclass[11pt, leqno, a4paper]{article}
+\usepackage{hyperref, amsmath, amssymb}
+\hypersetup{colorlinks=true, urlcolor=blue, breaklinks=true}
+
+\title{Programming Assignment 4 -- Basic Probability, Computing and Statistics 2016 \\[2mm]
+\large{Fall 2016, Master of Logic, University of Amsterdam}}
+\author{Instructors: Philip Schulz, Christian Schaffner and Bas Cornellisen}
+\date{Submission deadline: Wednesday, November 30th, 8 p.m.}
+
+\begin{document}
+\maketitle
+
+\paragraph{Note:} if the assignment is unclear to you or if you get
+stuck, do not hesitate to ask in the
+\href{https://www.moodle.ch/lms/mod/forum/view.php?id=1721}{forum}.
+
+\section{Assignment}
+
+This week we will implement a Na\"ive Bayes (NB) classifier for text data. If you do not remember what a 
+NB classifier is, check \href{https://github.com/BasicProbability/LectureNotes/blob/master/chapter4/chapter4.pdf}{here}. 
+We will first train the classifier using MLE and then make predictions based on our estimates.
+
+\subsection{Na\"ive Bayes Terminology}
+
+In NB training we assume i.i.d. data points $ (x_{i},y_{i}) $ ($ 1 \leq i \leq n $) where $ x_{i} $ is a $ k $-dimensional vector and
+$ y $ is 1-dimensional. The entries of $ x $ are called \textbf{features}. When have to make predictions we are presented with vectors
+$ x_{t} $ ($ t > n $) which have no accompanying $ y $-values. Our task is to infer these $ y $-values. The posterior probability of a particular value
+for $ Y_{t} $ according the the Na\"ive Bayes assumption is
+\begin{equation}
+P(Y_{y} = y_{t}|X_{t} = x_{t}) \propto P(Y_{t} = y_{t}) \prod_{j=1}^{k}P(X_{tj} = x_{tj}|Y_{t} = y_{t}) \ .
+\end{equation}
+
+By convention, we call the $ Y $-variables \textbf{labels}, \textbf{classes} or \textbf{categories}. We will use these terms interchangeably to get you used
+to them. A Naive classifier thus performs inference based on $ k $ features (where $ k $ may differ across data points). For the purpose of this exercise, we take the 
+features to be words and the labels to be names of news groups.
+
+\subsection{Data}
+
+We will use the famous \href{http://qwone.com/~jason/20Newsgroups/}{20 newsgroups data set} for this 
+exercise. As the name suggest, there are 20 groups of text between which we have to distinguish. This
+implies a baseline performance achieved by randomly choosing a group of $ 5\% $. The data are emails
+within newsgroups collected in the 1990's. For a start, we will simply use all strings separated by
+whitespace as features for our NB model. We call these strings words.
+
+\subsection{Smoothing}
+
+Many words will only occur in one class $ c $. When we see a text from that class during prediction time, the
+other classes will not have probabilities for as many words as $ c $. There are two ways to go about this:
+\begin{enumerate}
+\item Simply ignore the words that have 0 probability under a class. This will lead to many classes
+having fewer terms in the NB product than $ c $. Thus, these classes will have a higher posterior.
+\item Do model all words for all classes. Unfortunately, most unseen texts (the ones we are dealing
+with at prediction time) contain for each class at least one word that has 0 probability. In effect, the
+posterior probability for all classes will be 0. Notice that this means the posterior is not even defined
+as it does not sum up to 1.
+\end{enumerate} 
+
+As you can see, both ways will give us the wrong results. There is a cleverer way, however. We remember
+all words that we have encountered during training. These define our vocabulary. During prediction we
+will ignore all words not in the vocabulary. Moreover, we perform smoothing. This means that, before
+doing MLE, we add a constant count for \textit{all} words in the vocabulary to the training counts
+of every class. This has the effect that all vocabulary words will have positive probability under
+all classes. 
+
+\subsection{Logprobs}
+
+Last week we mentioned that in probabilistic calculations, a product of probabilities can become so
+small that it cannot be represented by your computer anymore. This is exactly the case with Na\"ive
+Bayes. When you classify a document, you have to compute a potentially large product of probabilities.
+To avoid turning them to 0 (and to make computation more efficient), we will work with log-probs
+instead. Make sure to transform your MLEs to log-probs before doing any predictions.
+
+\subsection{Your Task}
+We have implemented a commandline interface and a skeleton of the Naive Bayes class for you. Both can be 
+found \href{https://github.com/BasicProbability/BasicProbability.github.io/raw/master/Homework/Programming/2016-17/Assignment4/prerequisites.zip}{here}. Please do not manipulate \texttt{naive\_Bayes\_classifier.py}. Please implement the methods that are marked with a TODO. For prediction, please output the 
+a posteriori most likely label. Only work on 
+\texttt{Naive\_Bayes.py}. Feel free to add any methods and data structures that you deem necessary.
+
+\paragraph{Challenge yourself} On the development set, which we provide together with the code, you
+should achieve an accuracy of $ 80.95\% $ if the smoothing constant is set to 1. Can you do better
+than that? Try different smoothing constants or try to change the words (e.g. by lowercasing them) or
+try to include more features (characters, for example). The possibilities are limitless! 
+
+\subsection{Running the Code}
+You will have to supply commandline arguments to the script this time. This can be done in Pycharm. 
+Right-click on the run symbol and select \textit{Add parameters}. In the field \textit{script parameters}
+you then have to enter the following for \texttt{naive\_Bayes\_classifier.py}
+\begin{center}
+\texttt{--training-corpus-dir <Path to 20news-18828> --test-set-directory <Path to dev-set>}
+\end{center}
+(Note: the line break was inserted by \LaTeX and is not needed in Pycharm.)
+You can optionally add
+\begin{center}
+\texttt{--keys <Path to dev\_key.txt>}
+\end{center}
+in which case the script will also run an evaluation of your output. For this to work you have to assign
+a string containing your Python command (either \texttt{python} or \texttt{python3} for most of you)
+to the variable \texttt{my\_python} at the top of the file.
+
+The output will be a file called \texttt{predictions.txt}. You can separately check your performance using the
+accuracy checker (which is the same script used if you provide the \texttt{--keys} argument above). 
+For that, you will have to pass argument to \texttt{accuracy\_checker.py}, as well. These
+are simply
+\begin{center}
+\texttt{<Path to predictions.txt> <Path to dev\_keys.txt>}
+\end{center} 
+
+\section{Grading}
+You will be graded on a test set that we will make available during peer review. The test set
+is structured like the dev set but contains different files.
+\begin{itemize}
+\item[2 points] The code produces predictions that are in the correct format and assign labels that
+it has been trained on (instead of arbitrarily named labels)
+\item[2 point] The test-set (not dev-set(!)) accuracy is at least $ 40\% $.
+\item[2 point] The test-set (not dev-set(!)) accuracy is at least $ 60\% $.
+\item[2 point] The test-set (not dev-set(!)) accuracy is at least $ 70\% $.
+\item[1 point] The test-set (not dev-set(!)) accuracy is at least $ 80\% $.
+\item[1 point] The test-set (not dev-set(!)) accuracy is higher than $ 80\% $.
+\end{itemize}
+
+\end{document}

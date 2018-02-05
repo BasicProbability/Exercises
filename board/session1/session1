@@ -1,0 +1,28 @@
+\documentclass[11p,a4paper]{article}
+
+\usepackage{amsmath, amssymb,enumerate,arev}
+
+\title{Board Questions}
+\date{First Session, Sep 9th}
+
+\begin{document}
+\maketitle
+
+\section{Olympics}
+There are 5 competitors in the 100m final. How many ways can
+gold silver and bronze be awarded?
+
+\section{Coin flips}
+\begin{enumerate}[a)]
+\item Count the number of ways to get exactly 3 heads in 10 coin flips.
+\item For a fair coin, what is the probability of exactly 3 heads in 10 flips.
+\end{enumerate}
+
+\section{Poker}
+Deck of 52 cards:
+\begin{itemize}
+\item 13 ranks: 2,3, \ldots, 9,10,J,Q,K,A
+\item 4 suits: \textcolor{red}{\heartsuit}
+\end{itemize}
+
+\end{document}
