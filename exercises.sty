@@ -166,6 +166,10 @@
 \definecolor{RED}{rgb}{.5,0,0}
 \renewcommand*{\pagemark}{}
 
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor = blue, linkcolor = blue}
+
+
 % Environments etc
 \ifcomments
 	\newenvironment{mycomment}[0]{\sffamily\color{RED}}{\\}
@@ -176,10 +180,10 @@
 \newcommand\generalheader{
 	{\sffamily\flushleft\color{gray}
 		\textsc{\bfseries basic probability: theory}\\
-		Master of Logic, University of Amsterdam 
-		--- License: \textsc{cc by-nc-sa 4.0}
-%		\textsc{teachers} Christian Schaffner and Philip Schulz 
-%		\textsc{ta} Bas Cornelissen%
+		Master of Logic, University of Amsterdam, 2018 
+		--- \textsc{license} \textsc{cc by-nc-sa 4.0}\\
+        \textsc{teachers} Alexandre Cremers and Jakub Dotla\v{c}il	 
+        \textsc{ta} Bas Cornelissen
 	}
 }
 
@@ -216,6 +220,9 @@
 
 \newcommand{\credits}[1]{{\noindent\footnotesize\color{gray}\textsf{\textsc{credits} #1}}}
 
+\newcommand\discussionForumURL{https://canvas.uva.nl/courses/415/discussion_topics/382?module_item_id=5747}
+
+\newcommand\canvasURL{https://canvas.uva.nl/courses/415}
 \endinput
 
 
