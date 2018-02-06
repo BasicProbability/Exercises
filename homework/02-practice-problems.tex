@@ -1,0 +1,129 @@
+\documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
+
+%% Settings
+\newcommand\problemset{2}
+\newcommand\deadline{Wednesday September 12th, 21:00h}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+
+% Packages
+\usepackage[english]{exercises}
+\usepackage{wasysym,hyperref}
+
+\begin{document}
+
+\practiceproblems
+
+{\sffamily\noindent
+This week's exercises deal with the basics of probability theory such
+as sample space, event and probability function, conditional
+probabilities, independence etc. You only have to hand in the homework problems; these exercises are optional and for practicing only. If you have questions about them, please post them to the discussion forum and try to help each other. We will also keep an eye on that.
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{exercise}[]
+	 Consider an experiment that consists of determining the focus of 14 students in a class as either `logic', `language' or `computation', as well as their political inclination --- `left', `center', or `right'. How many outcomes are
+	 
+	 \begin{subex}
+	 	in the sample space?
+	 \end{subex}
+	 
+	 \begin{subex}
+	 	in the event that at least one of the class members is focused on `language'?
+	 \end{subex}
+	 
+	 \begin{subex}
+	 	in the event that no student identifies as `right'?
+	 \end{subex}
+\end{exercise}
+
+\begin{exercise}[]
+	 Sixty percent of the students at a certain school wear neither a wristwatch nor glasses. 20 percent wear a wristwatch and 30 percent glasses. If one is picked randomly, what is the probability of the student is wearing
+	
+	\begin{subex}
+		a wristwatch or glasses?
+	\end{subex}
+	
+	\begin{subex}
+		a wristwatch and glasses?
+	\end{subex}
+		
+\end{exercise}
+
+
+\begin{exercise}[]
+\begin{mycomment}
+	This is a trick question: I didn't say that $P(E)>0$.
+\end{mycomment}
+Let $(\Omega, \mathcal{A}, P)$ be a probability space and $E\in \mathcal{A}$ \emph{any} event. Consider de conditional probability $P( \cdot \mid E): A \mapsto P(A\mid E)$. Carefully motivate your answers --- this question might be trickier than you think.
+	\begin{subex}
+		Is $\bigl(\Omega, \mathcal A, P(\cdot \mid E)\bigr)$ a probability space?	
+	\end{subex}
+	\begin{subex}
+		How about $\bigl(\Omega\cap E, \mathcal A\cap E, P(\cdot \mid E)\bigr)$, where by$\mathcal A \cap E$ we actually mean $\{A\cap E: A\in \mathcal A\}$?
+	\end{subex}
+\end{exercise}
+
+\begin{exercise}[]
+Let $(\Omega, \mathcal{A}, P)$ be a finite probability space and $A, B, C\in \mathcal A$ three events.
+	\begin{subex}
+		Suppose that $P(A) \le P(B)$. Show that $P(A) + P(B) > 1$ implies that $P(A\cap B) > 0$.
+	\end{subex}
+	
+	\begin{subex}
+		Show that $P(A \cap B \mid C) = {P}(A\mid C) + {P}(B\mid C) - {P}(A \cup B \mid C)$ %using only the fact that for any event $E \in \mathcal{A}$  $\mathbb{P}(E) + \mathbb{P}(\bar{E}) = 1$\footnote{Also called the {\em sum rule}, cp. Definition 2.2.} and Definition 2.5 (conditional probability).	
+	\end{subex}
+\end{exercise}
+
+\begin{exercise}[]
+	 An urn contains $n$ white and $m$ black balls, $n, m > 0$.
+	
+	\begin{subex}
+		If two balls are randomly drawn, what is the probability that they are of the same color?		
+	\end{subex}
+	
+	\begin{subex}
+		If a ball is randomly drawn and then replaced before a second one is drawn, what is the probability that both drawn balls are of the same color?
+	\end{subex}
+		
+\end{exercise}
+
+\begin{exercise}[Birthdays]
+	Assume there are 365 days in a year and that birthdays are equally likely to fall on any day of the year. Consider a group of $n$ people of which you are not a member, so that an outcome would be a series of $n$ birthdays.
+	\begin{subex}
+		Formally define the sample space, event space and probability function.
+	\end{subex}
+	
+	\begin{subex}
+		Carefully describe the subsets corresponding to the following events: (A) someone in the group shares \emph{your} birthday; (B) some two people in the group share a birthday; and (C) some three people in the group share a birthday.
+	\end{subex}
+	
+	\begin{subex}
+	Find an exact formula for $P(A)$. What is the smallest $n$ such that $P(A) > 0.5$?	
+	\end{subex}
+	
+	\begin{subex}
+	Justify why $n$ is greater than $\frac{3	65}{2}$ without doing any computation. (We are looking for a short answer giving a heuristic sense of why this is so.)
+	\end{subex}
+\end{exercise}
+
+
+\begin{exercise}[`Boy or girl' paradox]
+	the following pair of questions appeared in a column by Martin Gardner in \emph{Scientific American} in 1959. 	Be sure to carefully justify your answers.
+	
+	\begin{subex}
+	Mr. Jones has two children. The older child is a girl. What is the probability that both children are girls?
+	\end{subex}
+	
+	\begin{subex}
+	Mr. Smith has two children. At least one of them is a boy. What is the probability that both children are boys?
+	\end{subex}
+	
+\end{exercise}
+
+\begin{exercise}[Taxi's]
+	In a city with one hundred taxis, 1 is blue and 99 are green. A witness observes a hit-and-run by a taxi at night and recalls that the taxi was blue, so the police arrest the blue-taxi driver who was on duty that night. The driver proclaims his innocence and hires you to defend him in court. You hire a scientist to test the witness' ability to distinguish blue and green taxis under conditions similar to the night of accident. The data suggests that the witness sees blue cars as blue 99\% of the time and green cars as blue 2\% of the time. Can there be reasonable doubt about your client's guilt? Motivate your answer numerically.\end{exercise}
+
+\end{document}
