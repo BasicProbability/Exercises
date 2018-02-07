@@ -1,119 +1,152 @@
 \documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
-
-%% Settings
 \newcommand\problemset{5}
 \newif\ifcomments
 %\commentsfalse % hide comments
 \commentstrue % show comments
-
-% Packages
 \usepackage[english]{{../exercises}}
-\usepackage{wasysym,hyperref}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Var}{Var}
-
 \begin{document}
 
 \practiceproblems
 
 {\sffamily\noindent
-This week's exercises deal with joint distributions, covariance and correlation. You only have to hand in the homework problems; these exercises are optional and for practicing only. 
-If you have questions about them, please post them to the \href{\discussionForumURL}{discussion forum} and try to help each other. We will also keep an eye on that.
+  You only have to hand in the homework problems; these exercises are optional
+  and for practicing only. If you have questions about them, please post them
+  to the \href{\discussionForumURL}{discussion forum} and try to help each
+  other. We will also keep an eye on that.
 }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 \begin{exercise}[Properties of the Poisson distribution]
-	The \emph{Poisson distribution} 	models the number of times some event happens in a given period of time. It's probability mass function is given by
-	\[
-	P(X = k) = {\frac {\lambda ^{k}e^{-\lambda }}{k!}}, \qquad \lambda \in \mathbb{R}_{>0}, \quad k=0,1,2,\dots
-	\]
-	where $\lambda$ is the distribution's only parameter. Let $X\sim \text{Poisson}(\lambda)$.
-	
-	\begin{subex}
-		Show that $E[X] = \lambda$.
-	\end{subex}
-	
-	\begin{subex}
-		Show that $\Var(X) = \lambda$.
-	\end{subex}
+  The \emph{Poisson distribution} models the number of times some event
+  happens in a given period of time. It's probability mass function is given by
+  \[
+    P(X = k) = {\frac {\lambda ^{k}e^{-\lambda }}{k!}}, 
+    \qquad \lambda \in \mathbb{R}_{>0}, \quad k=0,1,2,\dots
+  \]
+  where $\lambda$ is the distribution's only parameter. Let $X\sim
+  \text{Poisson}(\lambda)$.
 
+  % a)	
+  \begin{subex}
+    Show that $E[X] = \lambda$.
+  \end{subex}
+
+  % b)  
+  \begin{subex}
+    Show that $\Var(X) = \lambda$.
+  \end{subex}
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Maximum a posteriori estimates]
-	The \emph{Beta distribution} is a continuous probability distribution over $[0,1]$. You don't need to know anything about continuous distributions for this exercise. The important thing is that if you sample from a Beta distribution, you will get a real number $\theta$ in the interval $[0, 1]$, with probability
-	\[
-		P(\Theta = \theta|\alpha, \beta) = \frac{1}{B(\alpha, \beta)} \theta^{\alpha-1} (1-\theta)^{\beta-1},
-	\] 
-	Where $\alpha > 0$ and $\beta > 0$ are the two parameters of the distribution and $B(\alpha, \beta)$ is a normalizing constant that does not depend on $\theta$.
+  The \emph{Beta distribution} is a continuous probability distribution over
+  $[0,1]$. You don't need to know anything about continuous distributions for
+  this exercise. The important thing is that if you sample from a Beta
+  distribution, you will get a real number $\theta$ in the interval $[0, 1]$,
+  with probability
+  \[
+    P(\Theta = \theta|\alpha, \beta) 
+      = \frac{1}{B(\alpha, \beta)} \theta^{\alpha-1} (1-\theta)^{\beta-1},
+  \] 
+  Where $\alpha > 0$ and $\beta > 0$ are the two parameters of the distribution
+  and $B(\alpha, \beta)$ is a normalizing constant that does not depend on
+  $\theta$.
 
-	Let $\Theta \sim \text{Beta}(\alpha, \beta)$. Since $\Theta$ takes values in $[0,1]$ we use $\Theta$ as the parameter for a Bernoulli distribution. Let $X_1, \dots, X_N \sim \text{Bern}(\Theta)$ be i.i.d. random variables --- we use the beta distribution as a \emph{prior} for the Bernoulli.
+  Let $\Theta \sim \text{Beta}(\alpha, \beta)$. Since $\Theta$ takes values in
+  $[0,1]$ we use $\Theta$ as the parameter for a Bernoulli distribution. Let
+  $X_1, \dots, X_N \sim \text{Bern}(\Theta)$ be i.i.d. random variables --- we
+  use the beta distribution as a \emph{prior} for the Bernoulli.
 	
-	\begin{subex}
-	Check that the joint probability of i.i.d. Bernoulli variables $X_1, \dots X_N$ for a given $\theta$ is given by
+  % a)
+  \begin{subex}
+    Check that the joint probability of i.i.d. Bernoulli variables 
+    $X_1, \dots, X_N$ for a given $\theta$ is given by
 	\[
-	P(X_1=x_1, \dots, X_N=x_n \mid \theta) = \prod_{i=1}^N \theta^{x_i} (1-\theta)^{1-x_i}
+      P(X_1=x_1, \dots, X_N=x_n \mid \theta) 
+        = \prod_{i=1}^N \theta^{x_i} (1-\theta)^{1-x_i}
 	\]	
-	\end{subex}
+  \end{subex}
 
-	\begin{subex}
-		Find the unnormalized posterior log-probability 
-		\[
-			\mathcal P(\theta) := \ln \bigl[ P(X_1=x_1, \dots, X_N=x_n \mid \Theta=\theta) \cdot P(\Theta = \theta| \alpha, \beta)\bigr]
-		\]
-	\end{subex}
-
-	\begin{subex}
-	Find the derivative $\frac{\partial}{\partial \theta} \mathcal P(\theta)$.	
-	\end{subex}
-	
-	\begin{subex}
-	Show that the maximum a posteriori estimate 	for $\theta$ is 
-	\[
-		\theta_\textsc{map} 
-			= \text{argmax}_\theta P(\Theta = \theta | X_1, \dots, X_N)
-			= \frac{K + \alpha - 1}{N + \alpha + \beta - 2}, 
-	\]
-	where $K = \sum_{i=1}^N X_i$.
-	\end{subex}
-	
-	\begin{subex}
-		For which values of the parameters $\alpha$ and $\beta$ do you get the MLE estimate $\theta_\textsc{ML} = \text{argmax}_\theta P(X_1, \dots X_N \mid \theta)$ back? 
-	\end{subex}
-
-	\begin{subex}
-		The Beta prior effectively adds some more observations of $X=0$ and $X=1$ to the data. How many of each? 
-	\end{subex}
+  % b)
+  \begin{subex}
+    Find the unnormalized posterior log-probability 
+    \[
+      \mathcal P(\theta) 
+        := \ln \bigl[ P(X_1=x_1, \dots, X_N=x_n \mid \Theta=\theta)
+            \cdot P(\Theta = \theta| \alpha, \beta)\bigr]
+    \]
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    Find the derivative $\frac{\partial}{\partial \theta} \mathcal P(\theta)$.	
+  \end{subex}
+  
+  % d)
+  \begin{subex}
+    Show that the maximum a posteriori estimate for $\theta$ is 
+    \[
+      \theta_\textsc{map} 
+        = \text{argmax}_\theta P(\Theta = \theta | X_1, \dots, X_N)
+        = \frac{K + \alpha - 1}{N + \alpha + \beta - 2}, 
+    \]
+    where $K = \sum_{i=1}^N X_i$.
+  \end{subex}
+  
+  % e)
+  \begin{subex}
+    For which values of the parameters $\alpha$ and $\beta$ do you get the MLE
+    estimate $\theta_\textsc{ML} = \text{argmax}_\theta P(X_1, \dots X_N \mid
+    \theta)$ back?
+  \end{subex}
+  
+  % f)
+  \begin{subex}
+    The Beta prior effectively adds some more observations of $X=0$ and $X=1$
+    to the data. How many of each?
+  \end{subex}
 \end{exercise}
+
+%--------------
 
 \begin{exercise}[Multiple binomials]
-	Let $X_1, \dots, X_N$ be i.i.d.\ $\text{Binom}(n, \theta)$ random variables. 
-	Show that the maximum likelihood estimator for $\lambda$ is:
-	\[
-		\theta_\textsc{mle} = \text{argmax}_\lambda P(X_1, \dots, X_N \mid \lambda) = \frac{\sum_{i=1}^N x_i}{n \cdot N}.
-	\] 
-	Note that this differs from the script since we now have $N$ rather than 1 random variable. 
-	(Be careful not to confuse $n$ and $N$).
-	
-	\begin{subex}
-	Find the log-likelihood $\ln P(X_1^N=x_1^N \mid n, \theta)$ of the data.
-	\end{subex}
-	
-	\begin{subex}
-		Find the derivative $\frac{\partial}{\partial \theta} \ln P(X_1^N=x_1^N \mid n, \theta)$.
-	\end{subex}
-	
-	\begin{subex}
-		Show that the maximum likelihood estimator for $\theta$ is (keeping $n$ fixed):
-		\[
-			\theta_\textsc{mle} = \text{argmax}_\theta P(X_1^N=x_1^N \mid n, \theta) = \frac{\sum_{i=1}^N x_i}{n \cdot N}.
-		\] 
-	\end{subex}
-	
+  Let $X_1, \dots, X_N$ be i.i.d.\ $\text{Binom}(n, \theta)$ random variables. 
+  Show that the maximum likelihood estimator for $\lambda$ is:
+  \[
+    \theta_\textsc{mle} 
+      = \text{argmax}_\lambda P(X_1, \dots, X_N \mid \lambda)
+      = \frac{\sum_{i=1}^N x_i}{n \cdot N}.
+  \] 
+  Note that this differs from the script since we now have $N$ rather than 1
+  random variable. (Be careful not to confuse $n$ and $N$).
+  
+  % a)
+  \begin{subex}
+    Find the log-likelihood $\ln P(X_1^N=x_1^N \mid n, \theta)$ of the data.
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Find the derivative 
+    $\frac{\partial}{\partial \theta} \ln P(X_1^N=x_1^N \mid n, \theta)$.
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    Show that the maximum likelihood estimator for $\theta$ is (keeping $n$
+    fixed):
+    \[
+      \theta_\textsc{mle} 
+        = \text{argmax}_\theta P(X_1^N=x_1^N \mid n, \theta) 
+        = \frac{\sum_{i=1}^N x_i}{n \cdot N}.
+    \] 
+  \end{subex}
+
 \end{exercise}
 
-\vfill
-\credits{Some questions are from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu.}
+\vfill\creditspracticequestions
 \end{document}

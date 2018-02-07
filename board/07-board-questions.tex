@@ -1,172 +1,200 @@
 \documentclass[10pt, a5paper]{scrartcl}
-% Settings
 \newcommand\problemset{7}
 \newif\ifcomments
 \commentsfalse % hide comments
 %\commentstrue % show comments
 \usepackage[english]{../../exercises}
-\usepackage{amsmath,amssymb,amsthm,enumerate,xcolor,hyperref}
-\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=1.7cm]{geometry}
 \newtheorem{theorem}{Theorem}
 \newcommand{\len}{\ell}
 \begin{document}
 \boardquestions
 
+%---------------
 
 \begin{exercise}[Chain rule for entropy]
-	Prove the chain rule for entropy, namely that $H(X,Y)=H(X|Y)+H(Y)$.	
+  Prove the chain rule for entropy, namely that $H(X,Y)=H(X|Y)+H(Y)$.	
 \end{exercise}
 
+%--------------
 
 \paragraph{Data compression}
 For the rest of today, we are studying the problem of \emph{data compression}. 
-Assume we have a source of information which emits four different symbols $a,b,c,d$ with probabilities $1/2,1/4,1/8,1/8$, respectively. 
-We model our source as iid realisation of a categorical random variable $X$ with distribution $P_X$.
-A typical sequence of symbols from this source could look like this: $bababcdbbaabadbaaaa$.
-Our task is to \emph{compress} such sequences as much as possible. 
-Formally, we would like to map every source symbol to a binary string such that (i) we can recover the original source symbol again and (ii) the average encoding length is minimal.
+Assume we have a source of information which emits four different symbols
+$a,b,c,d$ with probabilities $1/2,1/4,1/8,1/8$, respectively. We model our
+source as iid realisation of a categorical random variable $X$ with
+distribution $P_X$. A typical sequence of symbols from this source could look
+like this: $bababcdbbaabadbaaaa$. Our task is to \emph{compress} such sequences
+as much as possible.  Formally, we would like to map every source symbol to a
+binary string such that (i) we can recover the original source symbol again and
+(ii) the average encoding length is minimal.
 
+%--------------
 
 \begin{exercise}[Codes]
-	The following are four (binary symbol) codes $C,D,E, F$ for the categorical random variable $X$, with ${\cal X} = \{a,b,c,d\}$:
-	\[
-	\begin{array}{c | c | l | l | l | l}
-	x & P(X=x) & C(x) & D(x) & E(x) & F(x)\\
-	\hline
-	a & 1/2 & 0   & 0   & 0   & 00 \\
-	\hline
-	b & 1/4 & 10  & 010 & 01  & 01\\
-	\hline
-	c & 1/8 & 110 & 01  & 011 & 10 \\
-	\hline
-	d & 1/8 & 111 & 10  & 111 & 11 \\
-	\end{array}
-	\]
+  The following are four (binary symbol) codes $C,D,E, F$ for the categorical
+  random variable $X$, with ${\cal X} = \{a,b,c,d\}$:
+  \[
+    \begin{array}{c | c | l | l | l | l}
+    x & P(X=x) & C(x) & D(x) & E(x) & F(x)\\
+    \hline
+    a & 1/2 & 0   & 0   & 0   & 00 \\
+    \hline
+    b & 1/4 & 10  & 010 & 01  & 01\\
+    \hline
+    c & 1/8 & 110 & 01  & 011 & 10 \\
+    \hline
+    d & 1/8 & 111 & 10  & 111 & 11 \\
+    \end{array}
+  \]
 
-	These codes can be used to encode strings of symbols by concatenation. 
-	For instance, the encoding of string ``adba'' under code $E$ is
-		\[
-			E(adba) = E(a) E(d) E(b) E(a) 
-					= 0 \; 111 \; 01 \; 0 
-					= 0111010
-		\]
-	\begin{subex}
-		What is the encoding of $adba$ under codes $D$ and $F$?	
-	\end{subex}
-	
-	\begin{subex}
-		What is the decoding of $001001110$ under code $C$?
-		% note that there is some extra symbol at the end that cannot be decoded yet
-	\end{subex}
-	
-	\begin{subex}
-		What is the decoding of $0100100$ under code $D$? 
-		Is it unique?
-		% no, that code sucks so there are several ways of decoding possible
-	\end{subex}
-	
-	\begin{subex}
-		What is the decoding of $001111$ under code $E$? 
-		Is it unique?
-		What happens if you learn that the next bit is $1$ 
-		(so you have to decode $0011111$ under $E$)?
-		% you have to revisit previous decodings, because E is not prefix-free
-	\end{subex}
-	
-	\begin{subex}
-		Can you prove that arbitrary concatenations of codewords of $C$ are uniquely decodable? 
-		What about concatenations of codewords of $E$ or $F$?
-		% C is prefix-free, E is its inverse, 
-		% so post-fix free, F is also prefix-free
-	\end{subex}
-	
-	\begin{subex}
-		Which of the above codes is the most convenient to work with in terms of encoding and decoding? Why?
-		% C and F are the easiest, due to prefix-freeness. 
-		% $E$ would be easiest in the arabic world.
-	\end{subex}
+  These codes can be used to encode strings of symbols by concatenation. For
+  instance, the encoding of string ``adba'' under code $E$ is
+  \[
+    E(adba) 
+      = E(a) E(d) E(b) E(a) 
+      = 0 \; 111 \; 01 \; 0 
+      = 0111010
+  \]
+  
+  % a)
+  \begin{subex}
+    What is the encoding of $adba$ under codes $D$ and $F$?	
+  \end{subex}
+
+  % b)
+  \begin{subex}
+    What is the decoding of $001001110$ under code $C$?
+    % note that there is some extra symbol at the end that cannot be decoded
+    % yet
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    What is the decoding of $0100100$ under code $D$? Is it unique?
+    % no, that code sucks so there are several ways of decoding possible
+  \end{subex}
+  
+  % d)
+  \begin{subex}
+    What is the decoding of $001111$ under code $E$? Is it unique? What happens
+    if you learn that the next bit is $1$ (so you have to decode $0011111$
+    under $E$)?
+    % you have to revisit previous decodings, because E is not prefix-free
+  \end{subex}
+
+  % e)
+  \begin{subex}
+    Can you prove that arbitrary concatenations of codewords of $C$ are
+    uniquely decodable? What about concatenations of codewords of $E$ or $F$?
+    % C is prefix-free, E is its inverse, 
+    % so post-fix free, F is also prefix-free
+  \end{subex}
+
+  % f)	
+  \begin{subex}
+    Which of the above codes is the most convenient to work with in terms of
+    encoding and decoding? Why?
+    % C and F are the easiest, due to prefix-freeness. 
+    % $E$ would be easiest in the arabic world.
+  \end{subex}
 \end{exercise}
 
-
+%---------------
 
 \begin{exercise}[Code Length]
-	The \emph{average code length} of a binary symbol code is defined as follows.
-	Let $\len(s)$ denote the length of a string $s \in \{0,1\}^*$. The (average) length of a code $C$ for a source $X$ is defined as
-	\[
-		\len_C(X) 
-			:= \mathbb{E}[\len(C(X))] 
-			= \sum_{x \in \mathrm{supp}(X)} P(X=x) \len(C(x)) \, .
-	\]
-	
-	\begin{subex}
-		Compute $\len_C(X)$, $\len_D(X)$, $\len_E(X), \len_F(X)$ for the codes of the previous section.	
-	\end{subex}
-	
-	\begin{subex}
-		Compute the entropy $H(X)$ for the distribution $P_X$ above.
-		Compare the obtained values $H(X)$ and $\len_C(X)$ and the way you have computed them.
-		% observe that the computations are very similar, 
-		% and sometimes you actually up computing the entropy.
-		% In particular, if the length of a symbol corresponds 
-		% to its surprisal value in bits.
-	\end{subex}
+  The \emph{average code length} of a binary symbol code is defined as follows.
+  Let $\len(s)$ denote the length of a string $s \in \{0,1\}^*$. The (average)
+  length of a code $C$ for a source $X$ is defined as
+  \[
+    \len_C(X) 
+      := \mathbb{E}[\len(C(X))] 
+      = \sum_{x \in \mathrm{supp}(X)} P(X=x) \len(C(x)) \, .
+  \]
+
+  % a)
+  \begin{subex}
+    Compute $\len_C(X)$, $\len_D(X)$, $\len_E(X), \len_F(X)$ for the codes of
+    the previous section.
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Compute the entropy $H(X)$ for the distribution $P_X$ above. Compare the
+    obtained values $H(X)$ and $\len_C(X)$ and the way you have computed them.
+    % observe that the computations are very similar, 
+    % and sometimes you actually up computing the entropy.
+    % In particular, if the length of a symbol corresponds 
+    % to its surprisal value in bits.
+  \end{subex}
 \end{exercise}
 
-
+%---------------
 
 \begin{exercise}[Optimal Codes]
-	In the Information Theory course, we will prove Shannon's source-coding theorem: 
-	If $P_X$ is a distribution and $\ell_{\min}(X) := \min_C \len_C(X)$
-		the minimal average codeword length among all uniquely decodable codes, then
-		\[
-			H(X) \leq \ell_{\min}(X) \leq H(X)+1 \, .
-		\]
-	In other words, the Shannon entropy pretty much determines the optimal average codeword length.
+  In the Information Theory course, we will prove Shannon's source-coding
+  theorem: If $P_X$ is a distribution and $\ell_{\min}(X) := \min_C \len_C(X)$
+  the minimal average codeword length among all uniquely decodable codes, then
+  \[
+    H(X) \leq \ell_{\min}(X) \leq H(X)+1 \, .
+  \]
+  In other words, the Shannon entropy pretty much determines the optimal
+  average codeword length.
 
-	\begin{subex}
-		Show that code $C$ from question 2 is optimal in terms of average coding length.
-		% use the source-coding theorem
-	\end{subex}
-	
-	\begin{subex}
-		Construct an optimal symbol code for the following distribution:
-		\[
-			\begin{array}{c | c | c | c | c | c | c | c}
-			y & a & b & c & d & e & f & g\\
-			\hline
-			P(Y=y) & 1/4 & 1/4   & 1/8   & 1/8 & 1/8 & 1/16 & 1/16 \\
-			\end{array}
-		\]
-		% for instance: 00 , 01, 100, 101, 110, 1110, 1111
-		\emph{Hint: should symbols with high probability to occur receive long or short codewords?}
-	\end{subex}
-	
-	\begin{subex}
-		Prove that the code you found is optimal!		
-	\end{subex}
-	
- 	\begin{subex} 
-		Look up on the internet what
-		\href{https://en.wikipedia.org/wiki/Huffman_coding}{Huffman coding} 
-		is and use it to find an optimal binary symbol code for the following distribution:
-		\[
-			\begin{array}{c | c | c | c | c | c}
-			z & a & b & c & d & e\\
-			\hline
-			P(Z=z) & 0.25 & 0.25   & 0.2   & 0.15 & 0.15 \\
-			\end{array}
-		\]
-		% 10, 00, 01, 110, 111 		
- 	\end{subex}
+  % a)
+  \begin{subex}
+    Show that code $C$ from question 2 is optimal in terms of average coding
+    length.
+    % use the source-coding theorem
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Construct an optimal symbol code for the following distribution:
+    \[
+      \begin{array}{c | c | c | c | c | c | c | c}
+      y & a & b & c & d & e & f & g\\
+      \hline
+      P(Y=y) & 1/4 & 1/4   & 1/8   & 1/8 & 1/8 & 1/16 & 1/16 \\
+      \end{array}
+    \]
+    % for instance: 00 , 01, 100, 101, 110, 1110, 1111
+    \emph{Hint: should symbols with high probability to occur receive long or
+    short codewords?}
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    Prove that the code you found is optimal!		
+  \end{subex}
+  
+  % d)
+  \begin{subex} 
+    Look up on the internet what
+    \href{https://en.wikipedia.org/wiki/Huffman_coding}{Huffman coding} 
+    is and use it to find an optimal binary symbol code for the following
+    distribution:
+    \[
+      \begin{array}{c | c | c | c | c | c}
+      z & a & b & c & d & e\\
+      \hline
+      P(Z=z) & 0.25 & 0.25   & 0.2   & 0.15 & 0.15 \\
+      \end{array}
+    \]
+    % 10, 00, 01, 110, 111 		
+  \end{subex}
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Randomness-Efficient Sampling]
-	Let's consider a different problem, namely how to efficiently sample iid from a distribution $P_X$. 
-	Explain how to repeatedly sample from $P_X$ given an optimal binary code and access to uniformly distributed random bits. 
-	How many random bits per sampled symbol do you need on average?
-	% decode the random bits according to the code.
-	% roughly H(X) bits per symbol are required
+  Let's consider a different problem, namely how to efficiently sample iid from
+  a distribution $P_X$. Explain how to repeatedly sample from $P_X$ given an
+  optimal binary code and access to uniformly distributed random bits. How many
+  random bits per sampled symbol do you need on average?
+  % decode the random bits according to the code.
+  % roughly H(X) bits per symbol are required
 \end{exercise}
+
 \end{document}

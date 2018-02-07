@@ -1,46 +1,51 @@
 \documentclass[10pt, a5paper]{scrartcl}
-% Settings
 \newcommand\problemset{4}
 \newif\ifcomments
 \commentsfalse % hide comments
 %\commentstrue % show comments
 \usepackage[english]{../../exercises}
-\usepackage{amsmath,amssymb,enumerate,xcolor,eurosym,booktabs}
+\usepackage{amsmath,amssymb}
 \usepackage[margin=1.7cm]{geometry}
 \DeclareMathOperator{\var}{Var}
 \DeclareMathOperator{\cov}{Cov}
 \DeclareMathOperator{\cor}{Cor}
-
 \begin{document}
 \boardquestions
 
-
 \begin{exercise}[Variances]
-	\begin{subex}
-		Prove that if $X \sim \text{Bernoulli}(p)$, then $\var(X)= p(1-p)$.
-	\end{subex}
-	
-	\begin{subex}
-		Prove that if $X \sim \text{Bin}(n, p)$, then $\var(X)= np(1-p)$.
-	\end{subex}
-	
-	\begin{subex}
-		Suppose $X_1, X_2, \ldots, X_n$ are independent and all have the same standard deviation $\sigma=2$. 
-		Let $\overline{X}$ be the average of $X_1, X_2, \ldots, X_n$. What is the standard deviation of $\overline{X}$?
-	\end{subex}
+  
+  % a)
+  \begin{subex}
+    Prove that if $X \sim \text{Bernoulli}(p)$, then $\var(X)= p(1-p)$.
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Prove that if $X \sim \text{Bin}(n, p)$, then $\var(X)= np(1-p)$.
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    Suppose $X_1, X_2, \ldots, X_n$ are independent and all have the same standard
+    deviation $\sigma=2$. Let $\overline{X}$ be the average of 
+    $X_1, X_2, \ldots, X_n$. What is the standard deviation of $\overline{X}$?
+  \end{subex}
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Covariance]
-	Flip a fair coin 3 times. Let $X$ be the number of heads in the first 2 flips and let $Y$ be the number of heads in the last 2 flips. Compute $\cov(X,Y)$.
+  Flip a fair coin 3 times. Let $X$ be the number of heads in the first 2 flips
+  and let $Y$ be the number of heads in the last 2 flips. Compute $\cov(X,Y)$.
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[More covariance]
-Toss a fair coin $2n+t$ times. Let $X$ be number of heads in the first $n+t$ flips and let $Y$ be number of heads in the last $n+t$ flips. Compute $\cov(X,Y)$ and $\cor(X,Y)$.	
+  Toss a fair coin $2n+t$ times. Let $X$ be number of heads in the first $n+t$
+  flips and let $Y$ be number of heads in the last $n+t$ flips. Compute
+  $\cov(X,Y)$ and $\cor(X,Y)$.
 \end{exercise}
 
-
-\vfill
-\credits{Adapted from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu}
+\vfill\creditsboardquestions
 \end{document}

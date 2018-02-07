@@ -1,72 +1,82 @@
 \documentclass[10pt, a5paper]{scrartcl}
-% Settings
 \newcommand\problemset{3}
 \newif\ifcomments
 \commentsfalse % hide comments
 %\commentstrue % show comments
 \usepackage[english]{../../exercises}
-\usepackage{amsmath,amssymb,enumerate,xcolor,eurosym,booktabs}
+\usepackage{amsmath,amssymb,eurosym,booktabs}
 \usepackage[margin=1.7cm]{geometry}
-
 \begin{document}
 \boardquestions
 
 \begin{exercise}[Discrete Distributions]
-	\begin{tabular}{c c c c c }
-	\toprule
-	$X$ 			& 1		& 3		& 5		& 7 \\
-	$F(X \leq x)$	& 0.5	& 0.75	& 0.9	& 1 \\
-	\bottomrule
-	\end{tabular}
-
-	\begin{subex}
-		What is $ P(X \leq 3) $?	
-	\end{subex}
-
-	\begin{subex}
-	What is $ P(X = 3) $?	
-	\end{subex}
+  \begin{tabular}{c c c c c }
+    \toprule
+    $X$ 			& 1		& 3		& 5		& 7 \\
+    $F(X \leq x)$	& 0.5	& 0.75	& 0.9	& 1 \\
+    \bottomrule
+  \end{tabular}
+  
+  % a)
+  \begin{subex}
+  	What is $ P(X \leq 3) $?	
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    What is $ P(X = 3) $?	
+  \end{subex}
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Expectations]
-	\begin{subex}
-		Would you accept a gamble that offers a 10\% chance to win \euro95 and a 90\% chance of losing \euro5?
-	\end{subex}
-	
-	\begin{subex}
-		Would you pay \euro5 to participate in a lottery that offers a 10\% chance to win \euro100 and a 90\% chance to win nothing?
-	\end{subex}
+  
+  % a)
+  \begin{subex}
+    Would you accept a gamble that offers a 10\% chance to win \euro95 and a
+    90\% chance of losing \euro5?
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Would you pay \euro5 to participate in a lottery that offers a 10\% chance
+    to win \euro100 and a 90\% chance to win nothing?
+  \end{subex}
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Memorylessness]
-	Assume that $ X \sim \text{Geometric}(p) $. Show that the geometric distribution is memoryless (or stationary), i.e. show that 
-	\[
-		P(X = n + k | X \geq n) = P(X = k)
-	\]
-	where $ n,k > 0 $.
+  Assume that $ X \sim \text{Geometric}(p) $. Show that the geometric
+  distribution is memoryless (or stationary), i.e. show that
+  \[
+    P(X = n + k | X \geq n) = P(X = k)
+  \]
+  where $ n,k > 0 $.
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Variance]
-	\begin{tabular}{c c c c c c}
-	\toprule
-	$ X $		& 1		&2		& 3		& 4		& 5	\\
-	$P(X = x)$	& 0.1 	& 0.2	& 0.4	& 0.2	& 0.1 \\
-	\bottomrule
-	\end{tabular}
+  \begin{tabular}{c c c c c c}
+    \toprule
+    $ X $		& 1		&2		& 3		& 4		& 5	\\
+    $P(X = x)$	& 0.1 	& 0.2	& 0.4	& 0.2	& 0.1 \\
+    \bottomrule
+  \end{tabular}
+  
+  % a)  
+  \begin{subex}
+    Compute the variance and standard deviation $ \sigma(X) $ of $ X $.
+  \end{subex}
 
-	\begin{subex}
-		Compute the variance and standard deviation $ \sigma(X) $ of $ X $.
-	\end{subex}
-	
-	\begin{subex}
-		What are the variance and standard deviation of $ \frac{X}{\sigma(X)}$?
-	\end{subex}
+  % b)
+  \begin{subex}
+    What are the variance and standard deviation of $ \frac{X}{\sigma(X)}$?
+  \end{subex}
 \end{exercise}
 
 
-\vfill
-\credits{Adapted from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu}
+\vfill\creditsboardquestions
 \end{document}

@@ -1,95 +1,95 @@
 \documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
-
-%% Settings
 \newcommand\problemset{3}
 \newcommand\deadline{Wednesday September 19th, 21:00h}
 \newif\ifcomments
 \commentsfalse % hide comments
 %\commentstrue % show comments
-
-% Packages
 \usepackage[english]{{../exercises}}
-\usepackage{wasysym,hyperref}
-\hypersetup{colorlinks=true, urlcolor = blue, linkcolor = blue}
-
-
 \begin{document}
 
 \homeworkproblems
 
 {\sffamily\noindent
-%This week's exercises deal with sets, counting and uniform probabilities.
-Your homework must be handed in \textbf{electronically via \href{\canvasURL}{Canvas} before \deadline}. 
-This deadline is strict and late submissions are graded with a 0. At the end of the course, the lowest of your 7 weekly homework grades will be dropped. You are strongly encouraged to work together on the exercises, including the homework. However, after this discussion phase, you have to write down and submit your own individual solution. Numbers alone are never sufficient, always motivate your answers.
+  Your homework must be handed in \textbf{electronically via
+  \href{\canvasURL}{Canvas} before \deadline}. This deadline is strict and late
+  submissions are graded with a 0. At the end of the course, the lowest of your
+  7 weekly homework grades will be dropped. You are strongly encouraged to work
+  together on the exercises, including the homework. However, after this
+  discussion phase, you have to write down and submit your own individual
+  solution. Numbers alone are never sufficient, always motivate your answers.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{exercise}[Expectation and variance (1pt)]
-	\begin{mycomment}
-		Tests if you know how expectation and variance behave under addition and scalar multiplication.
-	\end{mycomment}
-	
-	Suppose $X$ is a random variable with $E[X] = 5$ and $\mathrm{Var}[X] = 7$.	
-	\begin{subex}[0.5pt]
-	Compute $E[(2+X)^2]$
-	\end{subex}	
-	
-	\begin{subex}[0.5pt]
-	Compute $\mathrm{Var}(4+3X)$.
-	\end{subex}
-
+  Suppose $X$ is a random variable with $E[X] = 5$ and $\mathrm{Var}[X] = 7$.	
+  
+  % a)
+  \begin{subex}[0.5pt]
+    Compute $E[(2+X)^2]$
+  \end{subex}	
+  
+  % b)  
+  \begin{subex}[0.5pt]
+    Compute $\mathrm{Var}(4+3X)$.
+  \end{subex}
 \end{exercise}
 
+
+%---------------
 
 \begin{exercise}[A probability urn (2.5pt)]
-A jar contains $r$ red and $b$ blue balls. Balls are taken out randomly until a blue ball is first drawn. At that point the experiment stops. Each drawn ball is put back before picking a new one.
-	\begin{subex}[1pt]
-		What is the probability that you will draw exactly $k$ balls? 
-	\end{subex}
-	
-	\begin{subex}[1.5pt]
-		What is the probability that you will draw \emph{at
-                  least} $k$ balls? \emph{Hint: if you can't simplify
-                  your expression directly, look up the \href{https://en.wikipedia.org/wiki/Geometric_series}{geometric series}.}
-	\end{subex}
+  A jar contains $r$ red and $b$ blue balls. Balls are taken out randomly until
+  a blue ball is first drawn. At that point the experiment stops. Each drawn
+  ball is put back before picking a new one.
+  
+  % a)
+  \begin{subex}[1pt]
+    What is the probability that you will draw exactly $k$ balls? 
+  \end{subex}
+  
+  % b)
+  \begin{subex}[1.5pt]
+    What is the probability that you will draw \emph{at least} $k$ balls? 
+    \emph{Hint: if you can't simplify your expression directly, look up the
+    \href{https://en.wikipedia.org/wiki/Geometric_series}{geometric series}.}
+  \end{subex}
 \end{exercise}
+
+%---------------
 
 \begin{exercise}[Another probability urn (2.5pt)]
-\begin{mycomment}
-	Tests if you can describe a RV's distribution. For this particular distribution, you also recap combinations. The last two parts are about calculating expectation and variance from a distribution directly. (Is it a problem that you need (a) for (b) and (c)?)
-\end{mycomment}
-
-Assume that $k$ balls are randomly picked (without replacement) from an urn containing $N$ balls labelled from $1$ to $N$. Let $X$ be the largest label present in a draw. For example: if you have drawn balls $\{1, 15, 9, 3, 14\}$ then $X$ takes on the value $15$. Find an expression for the cumulative distribution function.
+  Assume that $k$ balls are randomly picked (without replacement) from an urn
+  containing $N$ balls labelled from $1$ to $N$. Let $X$ be the largest label
+  present in a draw. For example: if you have drawn balls $\{1, 15, 9, 3, 14\}$
+  then $X$ takes on the value $15$. Find an expression for the cumulative
+  distribution function.
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Two coins and a die (4pt)]
-You have two (fair) coins and a (fair) 4-sided die. Let $X$ be the number of heads after flipping the two coins and let $Y$ be the result of rolling the die. Let $Z$ be the average of $X$ and $Y$.
+  You have two (fair) coins and a (fair) 4-sided die. Let $X$ be the number of
+  heads after flipping the two coins and let $Y$ be the result of rolling the
+  die. Let $Z$ be the average of $X$ and $Y$.
 
-	\begin{subex}[1.5pt]
-	Find the standard deviations of $X$, $Y$ and $Z$.	
-	\end{subex}
-	
-	\begin{subex}[1pt]
-	Draw a graph of the probability mass function and the
-        cumulative distribution function of $Z$.
-	\end{subex}
-	
-	\begin{subex}[1.5pt]
-	You play the following game. If $2X \ge Y$, you win $X^2$ euros and otherwise you lose 1 euro. What is your expected total gain or loss after playing this game $40$ times?
-	\end{subex}
+  % a)
+  \begin{subex}[1.5pt]
+    Find the standard deviations of $X$, $Y$ and $Z$.	
+  \end{subex}
+  
+  % b)
+  \begin{subex}[1pt]
+    Draw a graph of the probability mass function and the cumulative
+    distribution function of $Z$.
+  \end{subex}
+  
+  % c)
+  \begin{subex}[1.5pt]
+    You play the following game. If $2X \ge Y$, you win $X^2$ euros and
+    otherwise you lose 1 euro. What is your expected total gain or loss after
+    playing this game $40$ times?
+  \end{subex}
 \end{exercise}
-
-% To do: change to script 3, ex 3
-
-%\begin{exercise}[Negative binomial distribution (3pt)]
-% Assume that a number of independent trials, each with a probability of success of $p$, $0 < p < 1$, are performed until $q$ successes are registered. Let $X$ be equal to the number of trials required, then
-%	$$P(X = n) = {{n-1} \choose {q-1}} p^{q} (1 - p)^{n-q} \qquad \qquad n = q, q+1, ...$$
-%
-%	Any RV $X$ whose probability distribution is given by the above is said to be a {\em negative binomial RV} with parameters $(q,p)$. Compute the expectation and variance of this RV with parameters $(q,p)$.	
-%\end{exercise}
-
 
 \end{document}

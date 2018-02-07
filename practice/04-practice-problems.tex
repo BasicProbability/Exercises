@@ -1,99 +1,120 @@
 \documentclass[a4paper,10pt,landscape,twocolumn]{scrartcl}
-
-%% Settings
 \newcommand\problemset{4}
 \newcommand\deadline{Wednesday September 12th, 21:00h}
 \newif\ifcomments
 \commentsfalse % hide comments
 %\commentstrue % show comments
-
-% Packages
 \usepackage[english]{{../exercises}}
-\usepackage{wasysym,hyperref}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Var}{Var}
-
 \begin{document}
 
 \practiceproblems
 
 {\sffamily\noindent
-This week's exercises deal with joint distributions, covariance and correlation. You only have to hand in the homework problems; these exercises are optional and for practicing only. 
-If you have questions about them, please post them to the \href{\discussionForumURL}{discussion forum} and try to help each other. We will also keep an eye on that.
+  This week's exercises deal with joint distributions, covariance and
+  correlation. You only have to hand in the homework problems; these exercises
+  are optional and for practicing only. If you have questions about them,
+  please post them to the \href{\discussionForumURL}{discussion forum} and try
+  to help each other. We will also keep an eye on that.
 }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \begin{exercise}[]
-	Let $X$ and $Y$ be two random variables where $X$ takes values in $\{0, 6\}$ and $Y$ in $\{-6, 0, 6\}$. Their joint distribution is given by $P_{XY}(0,5) = P_{XY}(0, -5) = \frac{2}{12}$, $P_{XY}(5,-5) = \frac{5}{12}$ and all other outcomes have probability $\frac{1}{12}$. 
-	
-	\begin{subex}
-	Find the cumulative distribution function $F_{XY}(x,y)$.	
-	\end{subex}
-		
-	\begin{subex}
-	Find the marginal distributions $P_X$ and $P_Y$.	
-	\end{subex}
-	
-	\begin{subex}
-	Are $X$ and $Y$ independent?	
-	\end{subex}
-	
-	\begin{subex}
-	Find the covariance of $X$ and $Y$.
-	\end{subex}
+  Let $X$ and $Y$ be two random variables where $X$ takes values in $\{0, 6\}$
+  and $Y$ in $\{-6, 0, 6\}$. Their joint distribution is given by 
+  $P_{XY}(0,5) = P_{XY}(0, -5) = \frac{2}{12}$, $P_{XY}(5,-5) = \frac{5}{12}$
+  and all other outcomes have probability $\frac{1}{12}$.
+
+  % a)	
+  \begin{subex}
+    Find the cumulative distribution function $F_{XY}(x,y)$.	
+  \end{subex}
+  
+  % b)  	
+  \begin{subex}
+    Find the marginal distributions $P_X$ and $P_Y$.	
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    Are $X$ and $Y$ independent?	
+  \end{subex}
+  
+  % d)
+  \begin{subex}
+    Find the covariance of $X$ and $Y$.
+  \end{subex}
 \end{exercise}
 
+%---------------
+
 \begin{exercise}[]
-	Let $X$ and $Y$ be two independent random variables with $\Var[X] = \Var[Y] = 1$ and $E[X] = E[Y] = 2$.
-	\begin{subex}
-		Calculate $\Cov(5X,6Y - 7)$.
-	\end{subex}
-	\begin{subex}
-		Calculate $\Cov(4X + Y, 6Y-6)$	
-	\end{subex}
-	
-	\begin{subex}
-		What is $E[XY]$?	
-	\end{subex}
+  Let $X$ and $Y$ be two independent random variables with 
+  $\Var[X] = \Var[Y] = 1$ and $E[X] = E[Y] = 2$.
+
+  % a)
+  \begin{subex}
+    Calculate $\Cov(5X,6Y - 7)$.
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Calculate $\Cov(4X + Y, 6Y-6)$	
+  \end{subex}
+  
+  % c)
+  \begin{subex}
+    What is $E[XY]$?	
+  \end{subex}
 \end{exercise}
 
-\begin{subex}
-Suppose $X$ and $Y$ are random variables with the following joint pmf. Are $X$ and $Y$ independent?
-	\[
+%-------------
+
+\begin{exercise}[]
+  Suppose $X$ and $Y$ are random variables with the following joint pmf. Are
+  $X$ and $Y$ independent?
+  \[
 	\begin{tabular}{c|c|c|c}
 			&$Y=1$	&$Y=2$	&$Y=3$\\\hline
 	$X=1$	&$1/18$	&$1/9$	&$1/6$ \\\hline
 	$X=2$	&$1/9$	&$1/6$	&$1/8$ \\\hline
 	$X=3$	&$1/6$	&$1/18$	&$1/9$  \\\hline
 	\end{tabular}
-	\]
-\end{subex}
+  \]
+\end{exercise}
 
+%---------------
 
 \begin{exercise}[]
-Let $X$ be a random variable for which $P(X\ge 0)$ and $E[X]$ are both strictly positive. Show that $P(X>0)$ is strictly bigger than $0$.
+  Let $X$ be a random variable for which $P(X\ge 0)$ and $E[X]$ are both
+  strictly positive. Show that $P(X>0)$ is strictly bigger than $0$.
 \end{exercise}
 
-\begin{exercise}
-The \emph{Poisson distribution} 	models the number of time some event happens in a given period of time. Its probability mass function is given by
-\[
-P(X = k) = {\frac {\lambda ^{k}e^{-\lambda }}{k!}}, \qquad \lambda \in \mathbb{R}_{>0}, \quad k=0,1,2,\dots
-\]
-where $\lambda$ is the distribution's only parameter.
+%---------------
+\begin{exercise}[]
+  The \emph{Poisson distribution} models the number of time some event happens 
+  in a given period of time. Its probability mass function is given by
+  \[
+    P(X = k) = {\frac {\lambda ^{k}e^{-\lambda }}{k!}}, 
+      \qquad \lambda \in \mathbb{R}_{>0}, \quad k=0,1,2,\dots
+  \]
+  where $\lambda$ is the distribution's only parameter.
 
-Suppose $X \sim \text{Poisson}(\lambda_x)$ and $Y \sim \text{Poisson}(\lambda_y)$ are two independent variables. 
-
-	\begin{subex}
-	Show that $X+Y$ is $\text{Poisson}(\lambda_x + \lambda_y)$-distributed.
-	\end{subex}
-	
-	\begin{subex}
-	Calculate $\Cov(X, Y)$.
-	\end{subex}
+  Suppose $X \sim \text{Poisson}(\lambda_x)$ and 
+  $Y \sim \text{Poisson}(\lambda_y)$ are two independent variables.
+  
+  % a)
+  \begin{subex}
+    Show that $X+Y$ is $\text{Poisson}(\lambda_x + \lambda_y)$-distributed.
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Calculate $\Cov(X, Y)$.
+  \end{subex}
 \end{exercise}
 
-
-\vfill
-\credits{Some questions are from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu.}
+\vfill\creditspracticequestions
 \end{document}

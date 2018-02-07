@@ -1,59 +1,66 @@
 \documentclass[10pt, a5paper]{scrartcl}
-% Settings
 \newcommand\problemset{5}
 \newif\ifcomments
 \commentsfalse % hide comments
 %\commentstrue % show comments
 \usepackage[english]{../../exercises}
-\usepackage{amsmath,amssymb,enumerate,xcolor,eurosym,nicefrac}
+\usepackage{amsmath,amssymb,nicefrac}
 \usepackage[margin=1.7cm]{geometry}
-
 \begin{document}
 \boardquestions
 
-
 \begin{exercise}[Sufficient Statistics]
-	You are given a data set $ x=x_{1}^{n} $ of $ n $ independent, geometrically distributed observations.
-Show that $ \sum_{i=1}^{n} x_i $ is a sufficient statistic for the geometric distribution.
+  You are given a data set $ x=x_{1}^{n} $ of $ n $ independent, geometrically
+  distributed observations. Show that $ \sum_{i=1}^{n} x_i $ is a sufficient
+  statistic for the geometric distribution.
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Covariance]
-	A coin is taken from a box containing three coins, which give heads with probability $p = \nicefrac{1}{3}, \nicefrac{1}{2}$, and $\nicefrac{2}{3}$. The mysterious coin is tossed 80 times, resulting in 49 heads and 31 tails.
+  A coin is taken from a box containing three coins, which give heads with
+  probability $p = \nicefrac{1}{3}, \nicefrac{1}{2}$, and $\nicefrac{2}{3}$.
+  The mysterious coin is tossed 80 times, resulting in 49 heads and 31 tails.
 
-	\begin{subex}
-		What is the likelihood of this data for each type of coin and which coin gives the maximum likelihood?
-	\end{subex}
-
-	\begin{subex}
-		Now suppose that we have a single coin with unknown probability $p$ of landing heads. Find the likelihood and log likelihood functions given the same data. What is the maximum likelihood estimate for $p$?
-	\end{subex}
+  % a)
+  \begin{subex}
+    What is the likelihood of this data for each type of coin and which coin
+    gives the maximum likelihood?
+  \end{subex}
+  
+  % b)
+  \begin{subex}
+    Now suppose that we have a single coin with unknown probability $p$ of
+    landing heads. Find the likelihood and log likelihood functions given the
+    same data. What is the maximum likelihood estimate for $p$?
+  \end{subex}
 \end{exercise}
 
+%---------------
 
 \begin{exercise}[Dice]
-There are five fair dice each with a different number of sides: 4,6,8,12,20.
-Jon picks one of them uniformly at random rolls it and reports a 13.
-
-	\begin{subex}	
-		Compute the posterior probability for each die to have generated this outcome.
-	\end{subex}
-	
-	\begin{subex}	
-		Compute the posterior probabilities if the result had been a 5 instead. \\
-		\emph{Hint: Drawing a table may help here. And please do use a calculator!}
-	\end{subex}
+  There are five fair dice each with a different number of sides: 4,6,8,12,20.
+  Jon picks one of them uniformly at random rolls it and reports a 13.
+  
+  \begin{subex}	
+    Compute the posterior probability for each die to have generated this
+    outcome.
+  \end{subex}
+  
+  \begin{subex}	
+    Compute the posterior probabilities if the result had been a 5 instead. \\
+    \emph{Hint: Drawing a table may help here. And please do use a calculator!}
+  \end{subex}
 \end{exercise}
 
-
+%---------------
 
 \begin{exercise}[Geometric maximum likelihood estimator]
-	Recall that if $Y$ is  geometrically distributed, then $P(Y=y) = (1-\theta)^{y}\theta$.
-	You are given a set of independent, geometrically distributed observations $x = x_{1}^{n}$.
-	Find the maximum likelihood estimator of $\theta$.
+  Recall that if $Y$ is  geometrically distributed, then 
+  $P(Y=y) = (1-\theta)^{y}\theta$.
+  You are given a set of independent, geometrically distributed observations 
+  $x = x_{1}^{n}$. Find the maximum likelihood estimator of $\theta$.
 \end{exercise}
 
-
-\vfill
-\credits{Adapted from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu}
+\vfill\creditsboardquestions
 \end{document}

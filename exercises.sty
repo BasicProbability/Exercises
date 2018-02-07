@@ -113,7 +113,8 @@
 %
 %% Listsolution
 \newenvironment{solutionlist}{%
-	\begin{enumerate}[label=\bfseries\upshape(\alph*),leftmargin=0pt,labelsep=\subexlabelsep,topsep=\sepafterex]
+\begin{enumerate}[label=\bfseries\upshape(\alph*),leftmargin=0pt,labelsep
+=\subexlabelsep,topsep=\sepafterex]
 	\itemsep0em\parskip0.5em\parsep0pt
 }{\end{enumerate}}
 
@@ -138,8 +139,10 @@
 
 \newenvironment{solutioncols}[1]{%
 	\begin{multicols}{#1}%
-	\begin{enumerate}[label=\bfseries\upshape(\alph*),leftmargin=0pt,labelsep=\subexlabelsep,topsep=\sepafterex,
-		rightmargin=\dimexpr\subexlabelsep+1.5em\relax]% note 1.5em is width of the subex label box 
+\begin{enumerate}[label=\bfseries\upshape(\alph*),leftmargin=0pt,labelsep
+=\subexlabelsep,topsep=\sepafterex,
+rightmargin=\dimexpr\subexlabelsep+1.5em\relax]% note 1.5em is width of the
+subex label box
 	\itemsep0em\parskip0.5em\parsep0pt%
 }{\end{enumerate}\end{multicols}}
 
@@ -218,11 +221,21 @@
 	}\\[1em]%
 }
 
-\newcommand{\credits}[1]{{\noindent\footnotesize\color{gray}\textsf{\textsc{credits} #1}}}
+\newcommand{\credits}[1]{{\noindent\footnotesize\color{gray}\textsf{\textsc
+{credits} #1}}}
 
-\newcommand\discussionForumURL{https://canvas.uva.nl/courses/415/discussion_topics/382?module_item_id=5747}
+\newcommand\creditsboardquestions{\credits{Adapted from MIT course 18-05 by
+Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu}}
+
+\newcommand\creditspracticequestions{\credits{%
+{Some questions are taken from MIT course 18-05 by J.~Orloff and J.~Bloom, see ocw.mit.edu.}}}
+
+\newcommand\discussionForumURL{https://canvas.uva.nl/courses/415/discussion
+_topics/382?module_item_id=5747}
 
 \newcommand\canvasURL{https://canvas.uva.nl/courses/415}
+
+
 \endinput
 
 
