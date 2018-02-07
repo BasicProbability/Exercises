@@ -19,105 +19,219 @@
 \noindent
 If you think you've spotted a typo or mistake, please let us know!
 
-\begin{exercise}[]
-%	There are 11 students in a class: 4 boys and 7 girls. We need to form a group of 5 people.
-	
-	\begin{subex}
-		That is simply $ 11 \choose 5$.
-	\end{subex}
 
-	 \begin{subex}
-	 	There are $N_4 = {7 \choose 4} \times 4 = 140$ groups with exactly 4 girls and $N_5 = {7 \choose 5} = 21$ groups with exactly 5 girls. That gives $n_D = N_4 + N_5 = 161$ groups with at least 4 girls.
-	 \end{subex}
-	 
-	 \begin{subex}
-%		If you pick the group (uniformly) at random, what is the probability that there are at least 3 boys in the group?
-		There are $N_3 = {3 \choose 4} \times {2 \choose 7} = 84$ groups with exactly 3 boys and $N_4 = 1 \times 7 = 7$ groups with exactly 4 boys, giving a total of $N_D = N_3 + N_4 = 91$ groups.
-		The total number of 5-student groups is $N_T = {11 \choose 5} = 462$, hence the probability asked for is $p_D = \nicefrac{N_D}{N_T} \approx 0.197$.
-	 \end{subex}
+\begin{exercise}[]
+  {\itshape
+  There are 11 students in a class: 4 boys and 7 girls. 
+  We need to form a group of 5 people.}
+
+  % a)
+  \begin{subex}\itshape
+    How many different groups can you make?
+  \end{subex}
+  
+  \begin{solution}
+  	That is simply $ 11 \choose 5$.
+  \end{solution}
+
+
+  % b)
+  \begin{subex}\itshape
+  	How many different groups are possible with at least 4 girls?
+  \end{subex}  
+  
+  \begin{solution}
+    There are $N_4 = {7 \choose 4} \times 4 = 140$ groups with exactly 4 girls 
+    and $N_5 = {7 \choose 5} = 21$ groups with exactly 5 girls. 
+    That gives $n_D = N_4 + N_5 = 161$ groups with at least 4 girls.
+  \end{solution}
+
+  \begin{subex}\itshape
+    If you pick the group (uniformly) at random, 
+    what is the probability that there are at least 3 boys in the group?
+  \end{subex}
+  
+  \begin{solution}
+    There are $N_3 = {3 \choose 4} \times {2 \choose 7} = 84$ groups 
+    with exactly 3 boys and $N_4 = 1 \times 7 = 7$ groups with exactly 4 boys,
+    giving a total of $N_D = N_3 + N_4 = 91$ groups.
+    The total number of 5-student groups is $N_T = {11 \choose 5} = 462$, 
+    hence the probability asked for is $p_D = \nicefrac{N_D}{N_T} \approx
+0.197$.
+  \end{solution}
 \end{exercise}
 
+%---------------
+
 \begin{exercise}[Words]
-	\begin{subex}
-%	How many `words' of length 5 can you make using each letter of the alphabet at most once?
-    There are 26 letters to use, which gives ${}_{26}P_{5} = \nicefrac{26!}{(26-5)!} = 26 \times 25 \times 24 \times 23 \times 22 = 7893600$ `words'.
-	\end{subex}
+
+  % a)
+  \begin{subex}\itshape
+    How many `words' of length 5 can you make 
+    using each letter of the alphabet at most once?
+  \end{subex}
+  
+  \begin{solution}
+    There are 26 letters to use, which gives 
+    ${}_{26}P_{5} 
+      = \nicefrac{26!}{(26-5)!} 
+      = 26 \times 25 \times 24 \times 23 \times 22 
+      = 7893600$ `words'.
+  \end{solution}
+
+
+  % b)
+  \begin{subex}\itshape
+    And how many if the order of the letters is irrelevant? 
+    (I.e., if we treat `words'  and `sword' as the same word.)
+  \end{subex}
+  
+  \begin{solution}
+    Now we're looking at \emph{combinations} rather than \emph{permutations}:
+    ${}_{26}C_{5} = {26 \choose 5} = 65780$.
+  \end{solution}
 	
-	\begin{subex}
-%	And how many if the order of the letters is irrelevant? (I.e., if we treat `words'  and `sword' as the same word.)
-    Now we're looking at \emph{combinations} rather than \emph{permutations}: ${}_{26}C_{5} = {26 \choose 5} = 65780$.
-	\end{subex}
 	
-	\begin{subex}
-%	And how many words can you make if you can use every letter as many times as you like?	
+  % c)
+  \begin{subex}\itshape
+    And how many words can you make if you can use every letter as many times
+    as you like?
+  \end{subex}
+  
+  \begin{solution}
     For each of the 5 positions you have 26 choices, so $26^5$.
-	\end{subex}
+  \end{solution}
 
-	\begin{subex}
-%	In how many unique ways can the letters in the word `error' be arranged?
-    First, there are ${5 \choose 3}$ ways to position the r's. Then you can place the e in one on the $2$ remaining positions, and the o goes in the remaining spot. So ${5 \choose 3} \times 2  \times 1 = 20$ words. 
-	\end{subex}
-
-	\begin{subex}
-%	 Consider a word of $n$ letters in which two letters occur more than once: $p$ and $q$ times respectively. How many unique `words' of the same length can you make of the $n$ letters?
-    Let $r$ be the number of letters that occur only once (so $n = p + q + r$) and let's call the reoccuring letters $P$ and $Q$.
-    We follow the argument of the previous exercise.
-    First, we can position the $P$'s in ${n \choose p}$ places, after which the ${Q}$'s can be placed in ${{n-p} \choose q}$ slots. The remaining $r$ letters can be ordered in $r!$ ways, so in total there are 
+  
+  % d)
+  \begin{subex}\itshape
+    In how many unique ways can the letters in the word `error' be arranged?
+  \end{subex}
+  
+  \begin{solution}
+    First, there are ${5 \choose 3}$ ways to position the r's. Then you can
+    place the e in one on the $2$ remaining positions, and the o goes in the
+    remaining spot. So ${5 \choose 3} \times 2  \times 1 = 20$ words. 
+  \end{solution}
+  
+  
+  % e)
+  \begin{subex}\itshape
+    Consider a word of $n$ letters in which two letters occur more than once: 
+    $p$ and $q$ times respectively. How many unique `words' of the same length
+    can you make of the $n$ letters?
+  \end{subex}
+  
+  \begin{solution}
+    Let $r$ be the number of letters that occur only once (so $n = p + q + r$)
+    and let's call the reoccuring letters $P$ and $Q$. We follow the argument
+    of the previous exercise. First, we can position the $P$'s in ${n \choose 
+    p}$ places, after which the ${Q}$'s can be placed in ${{n-p} \choose q}$
+    slots. The remaining $r$ letters can be ordered in $r!$ ways, so in total
+    there are 
     \[
       N_T = {n \choose p} \times {{n-p} \choose q} \times r!
     \]
     unique words we can make of these letters.
     
-    Simplify this expression suggests a simpler argument. Expanding the binomial coefficients and writing $r = n - p - q$ gives
+    Simplify this expression suggests a simpler argument. Expanding the
+    binomial coefficients and writing $r = n - p - q$ gives
     \[
-      N_T = \frac{n!}{p!(n-p)!} \times \frac{(n-p)!}{q!(n-p-q)!} \times (n-p-q)!
+      N_T 
+        = \frac{n!}{p!(n-p)!} 
+            \times \frac{(n-p)!}{q!(n-p-q)!} 
+            \times (n-p-q)!
         = \frac{n!}{p!q!}
     \]
-    So a simpler argument would be something like: there are $n!$ possible orderings of $n$ letters, but $p!$ of those are indistinguishable as they only shuffle $P$'s and a further $q!$ are identical because they only shuffled $Q$'s, hence $N_T = \nicefrac{n!}{p!q!}$. 
-	\end{subex}
+    So a simpler argument would be something like: there are $n!$ possible
+    orderings of $n$ letters, but $p!$ of those are indistinguishable as they
+    only shuffle $P$'s and a further $q!$ are identical because they only
+    shuffled $Q$'s, hence $N_T = \nicefrac{n!}{p!q!}$. 
+	\end{solution}
+	
 \end{exercise}
 
+%---------------
+
 \begin{exercise}[Books]
-%	 You have 3 books on complexity theory, 2 on probability theory, and 1 novel.
-	\begin{subex}
-%	In how many ways can the books be arranged?	
-	The books are distinguishable, so there are $6! = 720$ ways to order these $6$ books.
-	\end{subex}
-	
-	\begin{subex}
-%	And what if	the books on complexity theory must be together but the other books can be arranged in any order?
-    Now there are $3!=6$ ways to order the complexity-group, and $4!=24$ ways to order the complexity group and the remaining 3 books. This gives a total of $24\times 6 = 144$ orderings.
-	\end{subex}
+  {\itshape You have 3 books on complexity theory, 2 on probability theory,
+  and 1 novel.}
+
+  % a)
+  \begin{subex}\itshape
+    In how many ways can the books be arranged?	
+  \end{subex}
+  
+  \begin{solution}	
+    The books are distinguishable, so there are $6! = 720$ ways to order these
+    $6$ books.
+  \end{solution}
+
+  
+  % b)
+  \begin{subex}\itshape
+    And what if the books on complexity theory must be together but the other
+    books can be arranged in any order?
+  \end{subex}
+  
+  \begin{solution}
+    Now there are $3!=6$ ways to order the complexity-group, and $4!=24$ ways
+    to order the complexity group and the remaining 3 books. This gives a total
+    of $24\times 6 = 144$ orderings.
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}[Poker hands]
-	\begin{subex}[Two-pair]
-%		Two cards have one rank, two cards have another rank, and the remaining card has a third rank. Example: two 2's, two 5's and a king.
-		First we choose two ranks in ${13 \choose 2}$ ways. For each of those ranks we choose 2 suits in ${4 \choose 2}^2$ ways. For the last card, we pick one of 11 ranks and one of 4 suits. In total, this gives
-    	 \[  
-            N_D = { 13 \choose 2} \times {4 \choose 2}^2 \times 11 \times 4 = 123 552
-      	 \]
-      	 ways to draw a two-pair.
-      	 Since there are $N_T = {52 \choose 5} = 2598960$ possible hands, the probability of drawing a two-pair is 
-      	 \[
-      	   p_D = \frac{N_D}{N_T} = \frac{123552}{2598960} \approx 0.0475
-    	 \]
-	\end{subex}
+  {\itshape   Calculate the probability of drawing each of these poker hands.}
 	
-	\begin{subex}[Three-of-a-kind]
-%		 Three cards have one rank and the remaining two cards have two other ranks. Example: three 2's, a five and a king.
-		 First we pick one of 13 ranks, and then three suits in ${3 \choose 4}$ ways. Next we pick two ranks for the remaining cards in one of ${12 \choose 2}$ ways and two suits in $4^2$ ways.
-		 This gives 
-		 \[
-		  N_D = 13 \times {4 \choose 3} \times {12 \choose 2} \times 4^2 = 54912
-		 \]
-		 and as a result
-		 \[
-		  p_D = \frac{N_D}{N_T} = \frac{54912}{2598960} \approx 0.0211
-		 \]
-	\end{subex}
+  % a)
+  \begin{subex}[Two-pair]\itshape
+    Two cards have one rank, two cards have another rank, and the remaining
+    card has a third rank.
+  \end{subex}
+  
+  \begin{solution}
+    First we choose two ranks in ${13 \choose 2}$ ways. For each of those ranks
+    we choose 2 suits in ${4 \choose 2}^2$ ways. For the last card, we pick one
+    of 11 ranks and one of 4 suits. In total, this gives
+    \[  
+      N_D 
+        = { 13 \choose 2} \times {4 \choose 2}^2 \times 11 \times 4 
+        = 123 552
+    \]
+    ways to draw a two-pair. Since there are $N_T = {52 \choose 5} = 2598960$
+    possible hands, the probability of drawing a two-pair is 
+    \[
+      p_D 
+        = \frac{N_D}{N_T} 
+        = \frac{123552}{2598960} 
+        \approx 0.0475
+    \]
+  \end{solution}
+	
+
+  % b)
+  \begin{subex}[Three-of-a-kind]\itshape
+    Three cards have one rank and the remaining two cards have two other ranks.
+  \end{subex}
+  
+  \begin{solution}
+    First we pick one of 13 ranks, and then three suits in ${3 \choose 4}$
+    ways. Next we pick two ranks for the remaining cards in one of ${12 \choose
+    2}$ ways and two suits in $4^2$ ways. This gives 
+    \[
+      N_D 
+        = 13 \times {4 \choose 3} \times {12 \choose 2} \times 4^2 
+        = 54912
+    \]
+    and as a result
+	 \[
+      p_D 
+        = \frac{N_D}{N_T} 
+        = \frac{54912}{2598960} 
+        \approx 0.0211
+	 \]
+  \end{solution}
 \end{exercise}
 
-\vfill
-\credits{Some questions are from MIT course 18-05 by Jeremy Orloff and Jonathan Bloom, see ocw.mit.edu.}
 \end{document}
