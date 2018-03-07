@@ -12,8 +12,8 @@
 \begin{exercise}[Discrete Distributions]
   \begin{tabular}{c c c c c }
     \toprule
-    $X$ 			& 1		& 3		& 5		& 7 \\
-    $F(X \leq x)$	& 0.5	& 0.75	& 0.9	& 1 \\
+    $x$ 			& 1		& 3		& 5		& 7 \\
+    $F_X(x)$	& 0.5	& 0.75	& 0.9	& 1 \\
     \bottomrule
   \end{tabular}
   
@@ -48,10 +48,10 @@
 %---------------
 
 \begin{exercise}[Memorylessness]
-  Assume that $ X \sim \text{Geometric}(p) $. Show that the geometric
-  distribution is memoryless (or stationary), i.e. show that
+  Assume that $ X \sim \text{Geometric}(p) $, so $p(X=k) = p(1-p)^k$. Show that
+  the geometric distribution is \emph{memoryless}, i.e. show that
   \[
-    P(X = n + k | X \geq n) = P(X = k)
+    P(X = n + k \mid X \geq n) = P(X = k)
   \]
   where $ n,k > 0 $.
 \end{exercise}
@@ -61,7 +61,7 @@
 \begin{exercise}[Variance]
   \begin{tabular}{c c c c c c}
     \toprule
-    $ X $		& 1		&2		& 3		& 4		& 5	\\
+    $ x $		& 1		&2		& 3		& 4		& 5	\\
     $P(X = x)$	& 0.1 	& 0.2	& 0.4	& 0.2	& 0.1 \\
     \bottomrule
   \end{tabular}
