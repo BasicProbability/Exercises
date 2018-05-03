@@ -1,0 +1,53 @@
+\documentclass[10pt, a5paper]{scrartcl}
+\newcommand\problemset{6}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+\usepackage[english]{../../exercises}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.7cm]{geometry}
+\newtheorem{theorem}{Theorem}
+\newcommand{\len}{\ell}
+\begin{document}
+\boardquestions
+
+%---------------
+
+\begin{exercise}[Geometric EM]
+  You are given a mixture model with mixture components $ c_{1}$ and $c_{2} $ which are linked to geometric
+  distributions with parameters 
+  \begin{align}
+    \theta^{(0)}_{c_{1}} = 0.2, 
+    \qquad \text{and} \qquad
+    \theta^{(0)}_{c_{2}} = 0.6.
+  \end{align}
+  Both geometric distributions are of the form $p(X = k) = \theta (1-\theta)^k$.
+  Assume that the latent variables $Y$ are identically and independently distributed and that $ P(Y=c_{1}|\Theta=\theta^{(0)}) = 0.2$.
+  You observe the data set
+  \begin{align*}
+  x_1^4 = (0, 2, 2, 3).
+  \end{align*}
+  
+  
+  \begin{subex}
+  What is the (marginal) log-likelihood of this data set under the model? Feel free to use
+  calculators. Also, it might be helpful to collect all relevant probabilities in a table.
+  \end{subex}
+  
+  \begin{subex} 
+  Find the most likely mixture component for each data point.
+  \end{subex}
+  
+  \begin{subex}
+    Perform one EM iteration.    
+  \end{subex}
+  
+  \begin{subex}
+    Compute the marginal log-likelihood of the data with the updated parameters. The new value
+  should be higher than the one computed in the beginning.
+    
+  \end{subex}
+\end{exercise}
+
+
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass[10pt, a5paper]{scrartcl}
+\newcommand\problemset{7}
+\newif\ifcomments
+\commentsfalse % hide comments
+%\commentstrue % show comments
+\usepackage[english]{../exercises} % CHANGE THIS
+\usepackage{amsmath,amssymb,nicefrac}
+\usepackage[margin=1.7cm]{geometry}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+
+\begin{document}
+\boardquestions
+
+\begin{exercise}[The normal distribution]
+  Recall that the normal distribution with parameters $\mu$ and $\sigma$ has support over $\mathbb{R}$ and the pdf $f(x) = K \exp(\frac{-(x-\mu)^2}{2\sigma^2})$, where $K = (\sqrt{2\pi\sigma^2})^{-1}$ is the normalization constant.
+  In this exercise we look at a normal random variable $X$ for which $\sigma = 1$, so its density is
+  \[
+    f_X(x) = K \cdot \exp\Bigl(-\frac{1}{2}(x-\mu)^2\Bigr), 
+      \qquad \text{where } K=\frac{1}{\sqrt{2\pi}}
+  \]
+%  This problem is about a random variable $X$ that 
+% For simplicity, we will set $\sigma$ to $1$ in the rest of this problem.
+ 
+ \begin{subex}
+ 	Show that when $\mu=0$, then $\mathrm{E}[X] = 0$.
+ \end{subex}
+ \begin{subex}
+ 	Show that in general, $\mathrm{E}[X] = \mu$.\\ \textit{Hint: You can show that $\mathrm{E}[X-\mu]=0$ and use the linearity of $\mathrm{E}$.}
+ \end{subex}
+ 
+ In general, if we have $n$ independent samples from a continuous random variable, we define the likelihood as:
+ \[
+  f(x_1,\dots, x_n|\theta) = \prod_{i=1}^n f(x_i|\theta)
+ \]
+ 
+ \begin{subex}
+ Now consider $n$ independent $\text{Normal}(\mu, 1)$-distributed random variables.
+ Show that the sample mean $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ is a sufficient statistics for $\mu$\\\textit{Hints: The factorization theorem applies to the pdf. The following decomposition might  help: $\sum(x_i - \mu)^2 = \sum \left[(x_i - \bar{x}) + (\bar{x}-\mu) \right]^2 $}
+ \end{subex}
+ \begin{subex}
+ Show that the MLE for $\mu$ is  $\bar{x}$.
+ \end{subex}
+
+\subsection*{Cheat sheet:}
+\begin{align*}
+  \mathrm{e}^{x+y} 
+    &= \mathrm{e}^{x}\mathrm{e}^{y} 
+  \\
+  \ln(\mathrm{e}^{x}) 
+    &= x
+  \\
+  [(x-\mu)^2]' 
+    &= 2(x-\mu)
+  \\
+   \int_a^b g'(x) \cdot \mathrm{e}^{g(x)} \; dx 
+    \; &= \; \bigl[\mathrm{e}^{g(x)}\bigr]_a^b 
+    \; = \; \mathrm{e}^{g(b)} - \mathrm{e}^{g(a)}
+\end{align*}  
+\end{exercise}
+
+%---------------
+\end{document}
